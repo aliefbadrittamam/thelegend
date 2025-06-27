@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantai The Legend - Desa Padelegan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Custom Tailwind Extensions */
+        .gradient-ocean {
+            background: linear-gradient(135deg, #0066CC 0%, #003D82 50%, #001F3F 100%);
+        }
+
+        .gradient-sunset {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+        }
+
+        .gradient-coral {
+            background: linear-gradient(135deg, #FFA07A 0%, #20B2AA 50%, #4169E1 100%);
+        }
+
+        /* Ocean Animals Animation */
+        .ocean-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .ocean-animal {
+            position: absolute;
+            font-size: 2rem;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            opacity: 0.6;
+        }
+
+        .fish-1 {
+            animation: swim-right 15s infinite;
+            top: 20%;
+            color: #FF6B6B;
+        }
+
+        .fish-2 {
+            animation: swim-left 20s infinite;
+            top: 40%;
+            color: #4ECDC4;
+        }
+
+        .fish-3 {
+            animation: swim-diagonal 18s infinite;
+            top: 60%;
+            color: #45B7D1;
+        }
+
+        .jellyfish {
+            animation: float-vertical 12s infinite;
+            top: 30%;
+            left: 80%;
+            color: #9B59B6;
+        }
+
+        .seahorse {
+            animation: bounce-gentle 10s infinite;
+            top: 70%;
+            left: 10%;
+            color: #F39C12;
+        }
+
+        .turtle {
+            animation: swim-slow 25s infinite;
+            top: 50%;
+            color: #27AE60;
+        }
+
+        @keyframes swim-right {
+            0% { transform: translateX(-100px) rotate(0deg); }
+            50% { transform: translateX(50vw) rotate(10deg); }
+            100% { transform: translateX(calc(100vw + 100px)) rotate(0deg); }
+        }
+
+        @keyframes swim-left {
+            0% { transform: translateX(calc(100vw + 100px)) scaleX(-1) rotate(0deg); }
+            50% { transform: translateX(50vw) scaleX(-1) rotate(-10deg); }
+            100% { transform: translateX(-100px) scaleX(-1) rotate(0deg); }
+        }
+
+        @keyframes swim-diagonal {
+            0% { transform: translate(-100px, 0) rotate(45deg); }
+            25% { transform: translate(25vw, -50px) rotate(60deg); }
+            50% { transform: translate(50vw, 0) rotate(45deg); }
+            75% { transform: translate(75vw, -30px) rotate(30deg); }
+            100% { transform: translate(calc(100vw + 100px), 0) rotate(45deg); }
+        }
+
+        @keyframes float-vertical {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-80px) rotate(10deg); }
+        }
+
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes swim-slow {
+            0% { transform: translateX(-150px) rotate(0deg); }
+            33% { transform: translateX(30vw) rotate(5deg); }
+            66% { transform: translateX(70vw) rotate(-5deg); }
+            100% { transform: translateX(calc(100vw + 150px)) rotate(0deg); }
+        }
+
+        /* Hamburger Menu Animation */
+        .hamburger-line {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Custom Animations */
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(69, 183, 209, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(69, 183, 209, 0.6); }
+        }
+
+        .wave-animation {
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        .float-animation {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .ocean-animal {
+                font-size: 1.5rem;
+            }
+            
+            .mobile-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Hero wave effect */
+        .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff' fill-opacity='0.1'/%3e%3c/svg%3e");
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollProgress"></div>
+
+    <!-- Ocean Animals Animation Container -->
+    <div class="ocean-container">
+        <div class="ocean-animal fish-1">🐠</div>
+        <div class="ocean-animal fish-2">🐟</div>
+        <div class="ocean-animal fish-3">🦈</div>
+        <div class="ocean-animal jellyfish">🪼</div>
+        <div class="ocean-animal seahorse">🦄</div>
+        <div class="ocean-animal turtle">🐢</div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+        <nav class="glass">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="#home" class="text-white text-xl font-bold flex items-center space-x-2">
+                            <span class="text-2xl wave-animation">🏖️</span>
+                            <span>Pantai The Legend</span>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#home" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Beranda</a>
+                            <a href="#sejarah" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sejarah</a>
+                            <a href="#ikan" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Ikan Lokal</a>
+                            <a href="#galeri" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
+                            <a href="#desa" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Desa</a>
+                            <a href="#produk" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Produk</a>
+                            <a href="#video" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Video</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button type="button" class="text-white hover:text-blue-200 focus:outline-none focus:text-blue-200 transition-colors p-2" id="mobile-menu-button">
+                            <div class="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+                                <span class="hamburger-line w-6 h-0.5 bg-white block"></span>
+                                <span class="hamburger-line w-6 h-0.5 bg-white block"></span>
+                                <span class="hamburger-line w-6 h-0.5 bg-white block"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass">
+                    <a href="#home" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏠 Beranda</a>
+                    <a href="#sejarah" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📜 Sejarah</a>
+                    <a href="#ikan" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🐟 Ikan Lokal</a>
+                    <a href="#galeri" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📸 Galeri</a>
+                    <a href="#desa" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏘️ Desa</a>
+                    <a href="#produk" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🛍️ Produk</a>
+                    <a href="#video" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🎥 Video</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen gradient-ocean wave-bg">
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white mobile-padding">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 float-animation">
+                    Pantai The Legend
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
+                    Keindahan alam yang memukau di Desa Padelegan, tempat di mana legenda dan kenyataan bertemu dalam harmoni sempurna
+                </p>
+                <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                    <a href="#sejarah" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 pulse-glow">
+                        Jelajahi Sekarang 🌊
+                    </a>
+                    <a href="#produk" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                        Produk Lokal 🛍️
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <div class="flex flex-col items-center">
+                <span class="text-sm mb-2">Scroll untuk melihat lebih</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sejarah Section -->
+    <section id="sejarah" class="py-16 md:py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    📜 Sejarah Pantai The Legend
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="bg-blue-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Pantai The Legend memiliki sejarah yang kaya dan penuh makna bagi masyarakat Desa Padelegan. Konon, pantai ini mendapat namanya dari legenda kuno yang diturunkan secara turun-temurun oleh nenek moyang.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Menurut cerita rakyat setempat, pantai ini dulunya merupakan tempat persinggahan para nelayan legendaris yang memiliki kemampuan luar biasa dalam menangkap ikan. Mereka dipercaya memiliki hubungan spiritual dengan laut.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-cyan-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Hingga kini, Pantai The Legend tetap menjadi simbol kemakmuran dan keberkahan, serta destinasi wisata yang memadukan keindahan alam dengan kearifan lokal.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-80 h-80 md:w-96 md:h-96 gradient-sunset rounded-3xl shadow-2xl transform hover:rotate-3 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4 wave-animation">🏛️</div>
+                                <h3 class="text-2xl font-bold">Legenda Hidup</h3>
+                                <p class="text-lg opacity-90">Warisan Nenek Moyang</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center text-2xl shadow-lg float-animation">
+                            ⭐
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ikan Lokal Section -->
+    <section id="ikan" class="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    🐟 Kekayaan Ikan Lokal
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                    Pantai The Legend kaya akan berbagai jenis ikan dan hasil laut yang menjadi sumber kehidupan masyarakat setempat
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 wave-animation">🐟</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Kakap</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Ikan kakap merah dan putih yang sering ditemukan di perairan pantai. Memiliki rasa daging yang lezat dan tekstur yang kenyal.
+                        </p>
+                        <div class="mt-4 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                            Premium Quality
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 float-animation">🦐</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Udang Jerbung</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Udang lokal berukuran besar dengan cita rasa manis alami. Biasanya ditangkap menggunakan jaring tradisional.
+                        </p>
+                        <div class="mt-4 inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                            Fresh Daily
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 wave-animation">🐠</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Kembung</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Ikan pelagis kecil yang melimpah di perairan sekitar. Sumber protein tinggi dan omega-3 untuk masyarakat lokal.
+                        </p>
+                        <div class="mt-4 inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                            High Omega-3
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 float-animation">🦀</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Kepiting Bakau</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kepiting yang hidup di area mangrove sekitar pantai. Memiliki daging yang gurih dan sering dijadikan makanan khas.
+                        </p>
+                        <div class="mt-4 inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                            Local Delicacy
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 wave-animation">🐙</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cumi-Cumi</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Cephalopoda yang banyak ditemukan di malam hari. Menjadi hasil tangkapan favorit nelayan dengan perahu lampu.
+                        </p>
+                        <div class="mt-4 inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                            Night Catch
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-5xl mb-4 float-animation">🐡</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Baronang</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Ikan herbivora yang hidup di terumbu karang. Memiliki kandungan gizi tinggi dan rasa yang khas.
+                        </p>
+                        <div class="mt-4 inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">
+                            Reef Fish
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    📸 Galeri Pantai The Legend
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-blue-400 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-orange-400 to-pink-500 h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            🌅
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Sunrise Spektakuler</h3>
+                            <p class="text-sm opacity-90">Momen matahari terbit yang memukau</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 gradient-ocean h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            ⛵
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Perahu Nelayan</h3>
+                            <p class="text-sm opacity-90">Kehidupan nelayan tradisional</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 gradient-coral h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            👥
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Dokumentasi KKN</h3>
+                            <p class="text-sm opacity-90">Kegiatan mahasiswa KKN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 gradient-sunset h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            🌊
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Ombak Pantai</h3>
+                            <p class="text-sm opacity-90">Keindahan ombak alami</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-yellow-400 to-orange-500 h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            🌅
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Golden Hour</h3>
+                            <p class="text-sm opacity-90">Keindahan sore hari di pantai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-green-400 to-blue-500 h-64">
+                        <div class="flex items-center justify-center text-white text-4xl">
+                            🏖️
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-bold">Pantai Bersih</h3>
+                            <p class="text-sm opacity-90">Pantai yang terjaga kelestariannya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desa Padelegan Section -->
+    <section id="desa" class="py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-blue-50">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    🏘️ Desa Padelegan
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-400 to-blue-400 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                    Desa pesisir yang kaya akan sumber daya alam dan budaya maritim yang lestari
+                </p>
+            </div>
+            
+            <!-- Village Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl mb-4 wave-animation">👥</div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2" id="population-counter">0</h3>
+                    <p class="text-gray-600 font-medium">Total Penduduk</p>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <div class="flex justify-between">
+                            <span>Laki-laki: 1,423</span>
+                            <span>Perempuan: 1,424</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl mb-4 float-animation">🗺️</div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Strategis</h3>
+                    <p class="text-gray-600 font-medium">Lokasi Pesisir</p>
+                    <p class="text-sm text-gray-500 mt-4">
+                        Akses mudah ke pusat ekonomi dan destinasi wisata
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl mb-4 wave-animation">🌊</div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Maritim</h3>
+                    <p class="text-gray-600 font-medium">Budaya Bahari</p>
+                    <p class="text-sm text-gray-500 mt-4">
+                        Tradisi nelayan turun temurun
+                    </p>
+                </div>
+            </div>
+
+            <!-- Demographics and Resources -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Demographics -->
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="text-3xl mr-3">📊</span>
+                        Segmentasi Penduduk
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-blue-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">👶</span>
+                                <span class="font-medium">Anak-anak (0-17 tahun)</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-blue-600">28%</div>
+                                <div class="text-sm text-gray-500">797 jiwa</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-green-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">👨‍💼</span>
+                                <span class="font-medium">Dewasa (18-59 tahun)</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-green-600">58%</div>
+                                <div class="text-sm text-gray-500">1,651 jiwa</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-orange-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">👴</span>
+                                <span class="font-medium">Lansia (60+ tahun)</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-orange-600">14%</div>
+                                <div class="text-sm text-gray-500">399 jiwa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="text-3xl mr-3">🌊</span>
+                            Hasil Laut
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-2xl mb-2">🐟</div>
+                                <p class="text-sm font-medium">Ikan Segar</p>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-2xl mb-2">🦐</div>
+                                <p class="text-sm font-medium">Udang</p>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-2xl mb-2">🦀</div>
+                                <p class="text-sm font-medium">Kepiting</p>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-xl">
+                                <div class="text-2xl mb-2">🌿</div>
+                                <p class="text-sm font-medium">Rumput Laut</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="text-3xl mr-3">🌾</span>
+                            Hasil Pertanian
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-green-50 rounded-xl">
+                                <div class="text-2xl mb-2">🌾</div>
+                                <p class="text-sm font-medium">Padi</p>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-xl">
+                                <div class="text-2xl mb-2">🌽</div>
+                                <p class="text-sm font-medium">Jagung</p>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-xl">
+                                <div class="text-2xl mb-2">🥥</div>
+                                <p class="text-sm font-medium">Kelapa</p>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-xl">
+                                <div class="text-2xl mb-2">🥬</div>
+                                <p class="text-sm font-medium">Sayuran</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Lokal Section -->
+    <section id="produk" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    🛍️ Produk Lokal Unggulan
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                    Produk berkualitas tinggi dari hasil laut dan pertanian Desa Padelegan
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🦐
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Kerupuk Udang Premium</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Kerupuk udang asli dari udang segar Pantai The Legend. Renyah, gurih, dan tanpa pengawet buatan.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-orange-600">Rp 25.000</span>
+                            <span class="text-sm text-gray-500">/pack</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-medium">
+                                ⭐ Best Seller
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 gradient-ocean flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🐟
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Abon Ikan Kakap</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Abon ikan kakap dengan cita rasa autentik. Dibuat dengan resep turun-temurun yang khas.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">Rp 35.000</span>
+                            <span class="text-sm text-gray-500">/botol</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                🏆 Premium
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🧂
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Asin Kembung</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Ikan asin kembung yang diproses secara tradisional. Cocok untuk berbagai masakan nusantara.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-600">Rp 20.000</span>
+                            <span class="text-sm text-gray-500">/kg</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                                🌟 Traditional
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🥥
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Minyak Kelapa Murni</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Virgin coconut oil (VCO) dari kelapa segar lokal. 100% murni tanpa bahan kimia.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">Rp 45.000</span>
+                            <span class="text-sm text-gray-500">/botol</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
+                                💚 Organic
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🌿
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Rumput Laut Kering</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Rumput laut kering berkualitas tinggi, kaya nutrisi dan mineral alami dari laut.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-green-600">Rp 30.000</span>
+                            <span class="text-sm text-gray-500">/pack</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                🌊 Sea Fresh
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                        🍯
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Petis Udang Asli</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Petis udang dengan resep rahasia keluarga. Penguat rasa alami untuk masakan tradisional.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rp 15.000</span>
+                            <span class="text-sm text-gray-500">/botol</span>
+                        </div>
+                        <div class="mt-4">
+                            <span class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium">
+                                🎯 Secret Recipe
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-16">
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-4">Tertarik dengan Produk Kami?</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Hubungi kami untuk pemesanan dan informasi lebih lanjut
+                    </p>
+                    <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                        <a href="#" class="w-12 h-12 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                            💬
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-purple-500 hover:bg-purple-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                            📧
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                            🌐
+                        </a>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="bg-white bg-opacity-10 rounded-xl p-4">
+                        <h4 class="font-bold mb-3">📬 Newsletter</h4>
+                        <p class="text-sm text-blue-100 mb-4">Dapatkan update terbaru tentang Pantai The Legend</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Email Anda" class="flex-1 px-3 py-2 rounded-l-lg bg-white bg-opacity-20 text-white placeholder-blue-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <button class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-r-lg transition-colors">
+                                ➤
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-blue-400 border-opacity-30 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-blue-100 text-sm mb-4 md:mb-0">
+                        &copy; 2025 Pantai The Legend - Desa Padelegan. Dikembangkan dengan ❤️ oleh Tim KKN
+                    </p>
+                    <div class="flex space-x-6 text-sm text-blue-100">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div class="relative">
+            <button class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 pulse-glow" id="fab-main">
+                <span class="text-xl">💬</span>
+            </button>
+            
+            <!-- Sub FABs -->
+            <div class="absolute bottom-16 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300" id="fab-menu">
+                <button class="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="WhatsApp">
+                    <span class="text-lg">📱</span>
+                </button>
+                <button class="w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Email">
+                    <span class="text-lg">📧</span>
+                </button>
+                <button class="w-12 h-12 bg-red-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Telepon">
+                    <span class="text-lg">📞</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather Widget -->
+    <div class="hidden lg:block fixed top-20 right-6 z-40">
+        <div class="glass rounded-xl p-4 text-white w-48">
+            <h4 class="font-bold mb-3 flex items-center">
+                <span class="mr-2">🌊</span>
+                Cuaca Pantai
+            </h4>
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                    <span>☀️ Kondisi:</span>
+                    <span>Cerah</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>🌡️ Suhu:</span>
+                    <span>28°C</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>💨 Angin:</span>
+                    <span>5 km/h</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>🌊 Gelombang:</span>
+                    <span>Tenang</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerLines = mobileMenuButton.querySelector('.w-6');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerLines.classList.toggle('hamburger-active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburgerLines.classList.remove('hamburger-active');
+            });
+        });
+
+        // Header background change on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 74, 114, 0.95)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(0, 74, 114, 0.8)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Scroll progress indicator
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Population counter animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(start).toLocaleString('id-ID');
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'desa') {
+                        const counter = document.getElementById('population-counter');
+                        if (!counter.dataset.animated) {
+                            counter.dataset.animated = 'true';
+                            animateCounter(counter, 2847);
+                        }
+                    }
+                    
+                    // Add fade-in animation
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Gallery modal functionality
+        const galleryItems = document.querySelectorAll('[class*="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"]');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4';
+                modal.innerHTML = `
+                    <div class="relative max-w-4xl w-full">
+                        <div class="bg-white rounded-2xl overflow-hidden">
+                            <div class="h-96 ${item.querySelector('div').className}">
+                                ${item.querySelector('div').innerHTML}
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">${item.querySelector('h3').textContent}</h3>
+                                <p class="text-gray-600">${item.querySelector('p').textContent}</p>
+                            </div>
+                        </div>
+                        <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition-colors" onclick="this.parentElement.parentElement.remove()">
+                            ✕
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                
+                // Close on background click
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+            });
+        });
+
+        // Video play functionality
+        function playVideo(videoNumber) {
+            const playBtn = document.getElementById(`play-btn-${videoNumber}`);
+            playBtn.style.transform = 'scale(1.2)';
+            playBtn.textContent = '⏸️';
+            
+            setTimeout(() => {
+                playBtn.style.transform = 'scale(1)';
+                playBtn.textContent = videoNumber === 1 ? '▶️' : '🎬';
+            }, 2000);
+        }
+
+        // Floating Action Button functionality
+        const fabMain = document.getElementById('fab-main');
+        const fabMenu = document.getElementById('fab-menu');
+        let fabOpen = false;
+
+        fabMain.addEventListener('click', () => {
+            if (!fabOpen) {
+                fabMenu.style.opacity = '1';
+                fabMenu.style.transform = 'scale(1)';
+                fabMain.innerHTML = '<span class="text-xl">✕</span>';
+                fabOpen = true;
+            } else {
+                fabMenu.style.opacity = '0';
+                fabMenu.style.transform = 'scale(0)';
+                fabMain.innerHTML = '<span class="text-xl">💬</span>';
+                fabOpen = false;
+            }
+        });
+
+        // FAB sub-buttons functionality
+        fabMenu.addEventListener('click', (e) => {
+            if (e.target.closest('button')) {
+                const button = e.target.closest('button');
+                const title = button.title;
+                
+                let message = '';
+                switch(title) {
+                    case 'WhatsApp':
+                        message = 'WhatsApp: +62 123 456 7890';
+                        break;
+                    case 'Email':
+                        message = 'Email: info@pantaithelegend.com';
+                        break;
+                    case 'Telepon':
+                        message = 'Telepon: +62 123 456 7890';
+                        break;
+                }
+                
+                alert(`Hubungi kami melalui:\n${message}`);
+            }
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.wave-animation').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.animationDuration = '1s';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.animationDuration = '3s';
+            });
+        });
+
+        // Add loading screen
+        window.addEventListener('load', () => {
+            const loader = document.createElement('div');
+            loader.className = 'fixed inset-0 gradient-ocean flex items-center justify-center z-50';
+            loader.innerHTML = `
+                <div class="text-center text-white">
+                    <div class="text-6xl mb-4 wave-animation">🏖️</div>
+                    <h2 class="text-2xl font-bold mb-4">Memuat Pantai The Legend...</h2>
+                    <div class="w-64 h-2 bg-white bg-opacity-30 rounded-full mx-auto overflow-hidden">
+                        <div class="h-full bg-white rounded-full animate-pulse" style="width: 0%; animation: loading 2s ease-in-out forwards;"></div>
+                    </div>
+                </div>
+            `;
+            
+            const loadingStyle = document.createElement('style');
+            loadingStyle.textContent = `
+                @keyframes loading {
+                    0% { width: 0%; }
+                    100% { width: 100%; }
+                }
+            `;
+            document.head.appendChild(loadingStyle);
+            
+            document.body.appendChild(loader);
+            
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            }, 2500);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.getElementById('home');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Add click ripple effect
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add('ripple');
+
+            const ripple = button.getElementsByClassName('ripple')[0];
+            if (ripple) {
+                ripple.remove();
+            }
+
+            button.appendChild(circle);
+        }
+
+        // Add ripple effect to buttons
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        document.querySelectorAll('button, .cta-button').forEach(button => {
+            button.style.position = 'relative';
+            button.style.overflow = 'hidden';
+            button.addEventListener('click', createRipple);
+        });
+
+        // Add Easter egg - clicking ocean animals
+        document.querySelectorAll('.ocean-animal').forEach(animal => {
+            animal.style.cursor = 'pointer';
+            animal.style.pointerEvents = 'auto';
+            animal.addEventListener('click', () => {
+                animal.style.animation = 'none';
+                animal.style.transform = 'scale(1.5) rotate(360deg)';
+                animal.style.transition = 'transform 0.5s ease';
+                
+                setTimeout(() => {
+                    animal.style.animation = animal.classList.contains('fish-1') ? 'swim-right 15s infinite linear' :
+                                           animal.classList.contains('fish-2') ? 'swim-left 20s infinite linear' :
+                                           animal.classList.contains('fish-3') ? 'swim-diagonal 18s infinite linear' :
+                                           animal.classList.contains('jellyfish') ? 'float-vertical 12s infinite linear' :
+                                           animal.classList.contains('seahorse') ? 'bounce-gentle 10s infinite linear' :
+                                           'swim-slow 25s infinite linear';
+                    animal.style.transform = '';
+                    animal.style.transition = '';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors duration-300">
+                            📞 Hubungi Sekarang
+                        </a>
+                        <a href="#" class="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300">
+                            💬 Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="py-16 md:py-24 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    🎥 Video Dokumentasi
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                    Saksikan keindahan Pantai The Legend dan proses pengolahan hasil laut dalam video dokumentasi kami
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative">
+                        <div class="h-64 gradient-sunset flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(1)">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-1">▶️</div>
+                                <h3 class="text-xl font-bold">Keindahan Pantai The Legend</h3>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            🔴 LIVE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Panorama Menakjubkan</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Saksikan panorama menakjubkan Pantai The Legend dari udara dan permukaan. Video ini menampilkan keindahan alam yang masih asri dan aktivitas masyarakat lokal yang harmonis dengan alam.
+                        </p>
+                        <div class="flex items-center mt-4 text-sm text-gray-500">
+                            <span class="mr-4">⏱️ 5:30 menit</span>
+                            <span>👁️ 12.5K views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative">
+                        <div class="h-64 gradient-ocean flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(2)">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-2">🎬</div>
+                                <h3 class="text-xl font-bold">Pengolahan Hasil Laut</h3>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            🎯 HOT
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Dari Laut ke Meja</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dokumentasi lengkap proses pengolahan hasil laut menjadi produk bernilai tinggi. Dari tangkapan segar hingga menjadi produk siap konsumsi dengan teknologi tradisional yang terjaga.
+                        </p>
+                        <div class="flex items-center mt-4 text-sm text-gray-500">
+                            <span class="mr-4">⏱️ 8:15 menit</span>
+                            <span>👁️ 8.7K views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">25+</div>
+                    <p class="text-gray-600">Video Dokumentasi</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">50K+</div>
+                    <p class="text-gray-600">Total Views</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">2.5K</div>
+                    <p class="text-gray-600">Subscribers</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">95%</div>
+                    <p class="text-gray-600">Like Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-ocean text-white py-16">
+        <div class="max-w-7xl mx-auto mobile-padding">
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <span class="text-3xl mr-3 wave-animation">🏖️</span>
+                        Pantai The Legend
+                    </h3>
+                    <p class="text-blue-100 mb-6 leading-relaxed">
+                        Destinasi wisata bahari yang memadukan keindahan alam, kearifan lokal, dan potensi ekonomi masyarakat Desa Padelegan.
+                    </p>
+                    <div class="space-y-3">
+                        <p class="flex items-center text-blue-100">
+                            <span class="mr-3">📍</span>
+                            Desa Padelegan, Gresik, Jawa Timur
+                        </p>
+                        <p class="flex items-center text-blue-100">
+                            <span class="mr-3">📞</span>
+                            +62 123 456 7890
+                        </p>
+                        <p class="flex items-center text-blue-100">
+                            <span class="mr-3">📧</span>
+                            info@pantaithelegend.com
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <div class="space-y-3">
+                        <a href="#sejarah" class="block text-blue-100 hover:text-white transition-colors">📜 Sejarah Pantai</a>
+                        <a href="#ikan" class="block text-blue-100 hover:text-white transition-colors">🐟 Ikan Lokal</a>
+                        <a href="#galeri" class="block text-blue-100 hover:text-white transition-colors">📸 Galeri Foto</a>
+                        <a href="#desa" class="block text-blue-100 hover:text-white transition-colors">🏘️ Info Desa</a>
+                        <a href="#produk" class="block text-blue-100 hover:text-white transition-colors">🛍️ Produk Lokal</a>
+                        <a href="#video" class="block text-blue-100 hover:text-white transition-colors">🎥 Video</a>
+                    </div>
+                </div>
+
+                <!-- Social Media & Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Stay Connected</h3>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-12 h-12 bg-blue-500 hover:bg-blue-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                            📱
+                        </a>
+                        <a href="#" class
