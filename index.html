@@ -10,10 +10,13 @@
         
         * {
             font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
         }
 
-        body {
+        html, body {
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         /* Custom Tailwind Extensions */
@@ -43,10 +46,17 @@
 
         .ocean-animal {
             position: absolute;
-            font-size: 2rem;
+            font-size: 1.5rem;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
-            opacity: 0.6;
+            opacity: 0.4;
+        }
+
+        @media (min-width: 768px) {
+            .ocean-animal {
+                font-size: 2rem;
+                opacity: 0.6;
+            }
         }
 
         .fish-1 {
@@ -177,14 +187,21 @@
         }
 
         /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .ocean-animal {
-                font-size: 1.5rem;
-            }
-            
+        .mobile-container {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .mobile-padding {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 768px) {
             .mobile-padding {
-                padding-left: 1rem;
-                padding-right: 1rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
             }
         }
 
@@ -205,9 +222,42 @@
             z-index: 9999;
             transition: width 0.1s ease;
         }
+
+        /* Mobile grid fixes */
+        @media (max-width: 768px) {
+            .mobile-grid-fix {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-text-center {
+                text-align: center;
+            }
+            
+            .mobile-space-y {
+                margin-bottom: 1rem;
+            }
+            
+            .mobile-btn-stack {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .mobile-btn-stack a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        .no-scroll-x {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 no-scroll-x">
     <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator" id="scrollProgress"></div>
 
@@ -224,13 +274,14 @@
     <!-- Header -->
     <header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
         <nav class="glass">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mobile-container max-w-7xl mx-auto mobile-padding">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <a href="#home" class="text-white text-xl font-bold flex items-center space-x-2">
-                            <span class="text-2xl wave-animation">🏖️</span>
-                            <span>Pantai The Legend</span>
+                        <a href="#home" class="text-white text-lg md:text-xl font-bold flex items-center space-x-2">
+                            <span class="text-xl md:text-2xl wave-animation">🏖️</span>
+                            <span class="hidden sm:inline">Pantai The Legend</span>
+                            <span class="sm:hidden">The Legend</span>
                         </a>
                     </div>
 
@@ -262,7 +313,7 @@
 
             <!-- Mobile Navigation Menu -->
             <div class="md:hidden hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass">
+                <div class="mobile-container px-4 pt-2 pb-3 space-y-1 glass">
                     <a href="#home" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏠 Beranda</a>
                     <a href="#sejarah" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📜 Sejarah</a>
                     <a href="#ikan" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🐟 Ikan Lokal</a>
@@ -276,21 +327,21 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen gradient-ocean wave-bg">
+    <section id="home" class="relative h-screen gradient-ocean wave-bg no-scroll-x">
         <div class="absolute inset-0 bg-black bg-opacity-30"></div>
         <div class="relative z-10 flex items-center justify-center h-full text-center text-white mobile-padding">
-            <div class="max-w-4xl mx-auto px-4">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 float-animation">
+            <div class="mobile-container max-w-4xl mx-auto">
+                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 float-animation px-2">
                     Pantai The Legend
                 </h1>
-                <p class="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
+                <p class="text-base md:text-lg lg:text-xl mb-8 opacity-90 leading-relaxed px-2">
                     Keindahan alam yang memukau di Desa Padelegan, tempat di mana legenda dan kenyataan bertemu dalam harmoni sempurna
                 </p>
-                <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-                    <a href="#sejarah" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 pulse-glow">
+                <div class="mobile-btn-stack md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                    <a href="#sejarah" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 pulse-glow">
                         Jelajahi Sekarang 🌊
                     </a>
-                    <a href="#produk" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <a href="#produk" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105">
                         Produk Lokal 🛍️
                     </a>
                 </div>
@@ -300,8 +351,8 @@
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
             <div class="flex flex-col items-center">
-                <span class="text-sm mb-2">Scroll untuk melihat lebih</span>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="text-xs md:text-sm mb-2">Scroll untuk melihat lebih</span>
+                <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </div>
@@ -309,46 +360,46 @@
     </section>
 
     <!-- Sejarah Section -->
-    <section id="sejarah" class="py-16 md:py-24 bg-white relative z-10">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    <section id="sejarah" class="py-12 md:py-16 lg:py-24 bg-white relative z-10 no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                     📜 Sejarah Pantai The Legend
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <div class="bg-blue-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <p class="text-gray-700 leading-relaxed text-lg">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="space-y-6 order-2 lg:order-1">
+                    <div class="bg-blue-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-base md:text-lg">
                             Pantai The Legend memiliki sejarah yang kaya dan penuh makna bagi masyarakat Desa Padelegan. Konon, pantai ini mendapat namanya dari legenda kuno yang diturunkan secara turun-temurun oleh nenek moyang.
                         </p>
                     </div>
                     
-                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <p class="text-gray-700 leading-relaxed text-lg">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-base md:text-lg">
                             Menurut cerita rakyat setempat, pantai ini dulunya merupakan tempat persinggahan para nelayan legendaris yang memiliki kemampuan luar biasa dalam menangkap ikan. Mereka dipercaya memiliki hubungan spiritual dengan laut.
                         </p>
                     </div>
                     
-                    <div class="bg-cyan-50 p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <p class="text-gray-700 leading-relaxed text-lg">
+                    <div class="bg-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <p class="text-gray-700 leading-relaxed text-base md:text-lg">
                             Hingga kini, Pantai The Legend tetap menjadi simbol kemakmuran dan keberkahan, serta destinasi wisata yang memadukan keindahan alam dengan kearifan lokal.
                         </p>
                     </div>
                 </div>
                 
-                <div class="flex justify-center">
+                <div class="flex justify-center order-1 lg:order-2">
                     <div class="relative">
-                        <div class="w-80 h-80 md:w-96 md:h-96 gradient-sunset rounded-3xl shadow-2xl transform hover:rotate-3 transition-all duration-500 flex items-center justify-center">
+                        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 gradient-sunset rounded-3xl shadow-2xl transform hover:rotate-3 transition-all duration-500 flex items-center justify-center">
                             <div class="text-center text-white">
-                                <div class="text-6xl mb-4 wave-animation">🏛️</div>
-                                <h3 class="text-2xl font-bold">Legenda Hidup</h3>
-                                <p class="text-lg opacity-90">Warisan Nenek Moyang</p>
+                                <div class="text-4xl md:text-6xl mb-4 wave-animation">🏛️</div>
+                                <h3 class="text-xl md:text-2xl font-bold">Legenda Hidup</h3>
+                                <p class="text-base md:text-lg opacity-90">Warisan Nenek Moyang</p>
                             </div>
                         </div>
-                        <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center text-2xl shadow-lg float-animation">
+                        <div class="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20 bg-yellow-400 rounded-full flex items-center justify-center text-xl md:text-2xl shadow-lg float-animation">
                             ⭐
                         </div>
                     </div>
@@ -358,92 +409,92 @@
     </section>
 
     <!-- Ikan Lokal Section -->
-    <section id="ikan" class="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-50">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    <section id="ikan" class="py-12 md:py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                     🐟 Kekayaan Ikan Lokal
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
                     Pantai The Legend kaya akan berbagai jenis ikan dan hasil laut yang menjadi sumber kehidupan masyarakat setempat
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 wave-animation">🐟</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Kakap</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 wave-animation">🐟</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Kakap</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Ikan kakap merah dan putih yang sering ditemukan di perairan pantai. Memiliki rasa daging yang lezat dan tekstur yang kenyal.
                         </p>
-                        <div class="mt-4 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Premium Quality
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 float-animation">🦐</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Udang Jerbung</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 float-animation">🦐</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Udang Jerbung</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Udang lokal berukuran besar dengan cita rasa manis alami. Biasanya ditangkap menggunakan jaring tradisional.
                         </p>
-                        <div class="mt-4 inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Fresh Daily
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 wave-animation">🐠</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Kembung</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 wave-animation">🐠</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Kembung</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Ikan pelagis kecil yang melimpah di perairan sekitar. Sumber protein tinggi dan omega-3 untuk masyarakat lokal.
                         </p>
-                        <div class="mt-4 inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             High Omega-3
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 float-animation">🦀</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Kepiting Bakau</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 float-animation">🦀</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Kepiting Bakau</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Kepiting yang hidup di area mangrove sekitar pantai. Memiliki daging yang gurih dan sering dijadikan makanan khas.
                         </p>
-                        <div class="mt-4 inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Local Delicacy
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 wave-animation">🐙</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cumi-Cumi</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 wave-animation">🐙</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Cumi-Cumi</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Cephalopoda yang banyak ditemukan di malam hari. Menjadi hasil tangkapan favorit nelayan dengan perahu lampu.
                         </p>
-                        <div class="mt-4 inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Night Catch
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
-                        <div class="text-5xl mb-4 float-animation">🐡</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Baronang</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-4xl md:text-5xl mb-4 float-animation">🐡</div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Baronang</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
                             Ikan herbivora yang hidup di terumbu karang. Memiliki kandungan gizi tinggi dan rasa yang khas.
                         </p>
-                        <div class="mt-4 inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="mt-4 inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Reef Fish
                         </div>
                     </div>
@@ -453,96 +504,96 @@
     </section>
 
     <!-- Galeri Section -->
-    <section id="galeri" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    <section id="galeri" class="py-12 md:py-16 lg:py-24 bg-white no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                     📸 Galeri Pantai The Legend
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-blue-400 mx-auto rounded-full"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-orange-400 to-pink-500 h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-orange-400 to-pink-500 h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             🌅
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Sunrise Spektakuler</h3>
-                            <p class="text-sm opacity-90">Momen matahari terbit yang memukau</p>
+                            <h3 class="text-sm md:text-lg font-bold">Sunrise Spektakuler</h3>
+                            <p class="text-xs md:text-sm opacity-90">Momen matahari terbit yang memukau</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 gradient-ocean h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video gradient-ocean h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             ⛵
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Perahu Nelayan</h3>
-                            <p class="text-sm opacity-90">Kehidupan nelayan tradisional</p>
+                            <h3 class="text-sm md:text-lg font-bold">Perahu Nelayan</h3>
+                            <p class="text-xs md:text-sm opacity-90">Kehidupan nelayan tradisional</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 gradient-coral h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video gradient-coral h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             👥
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Dokumentasi KKN</h3>
-                            <p class="text-sm opacity-90">Kegiatan mahasiswa KKN</p>
+                            <h3 class="text-sm md:text-lg font-bold">Dokumentasi KKN</h3>
+                            <p class="text-xs md:text-sm opacity-90">Kegiatan mahasiswa KKN</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 gradient-sunset h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video gradient-sunset h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             🌊
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Ombak Pantai</h3>
-                            <p class="text-sm opacity-90">Keindahan ombak alami</p>
+                            <h3 class="text-sm md:text-lg font-bold">Ombak Pantai</h3>
+                            <p class="text-xs md:text-sm opacity-90">Keindahan ombak alami</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-yellow-400 to-orange-500 h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-yellow-400 to-orange-500 h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             🌅
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Golden Hour</h3>
-                            <p class="text-sm opacity-90">Keindahan sore hari di pantai</p>
+                            <h3 class="text-sm md:text-lg font-bold">Golden Hour</h3>
+                            <p class="text-xs md:text-sm opacity-90">Keindahan sore hari di pantai</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-w-16 aspect-h-12 bg-gradient-to-br from-green-400 to-blue-500 h-64">
-                        <div class="flex items-center justify-center text-white text-4xl">
+                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-green-400 to-blue-500 h-48 md:h-64">
+                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
                             🏖️
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
-                            <h3 class="text-lg font-bold">Pantai Bersih</h3>
-                            <p class="text-sm opacity-90">Pantai yang terjaga kelestariannya</p>
+                            <h3 class="text-sm md:text-lg font-bold">Pantai Bersih</h3>
+                            <p class="text-xs md:text-sm opacity-90">Pantai yang terjaga kelestariannya</p>
                         </div>
                     </div>
                 </div>
@@ -551,25 +602,25 @@
     </section>
 
     <!-- Desa Padelegan Section -->
-    <section id="desa" class="py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-blue-50">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    <section id="desa" class="py-12 md:py-16 lg:py-24 bg-gradient-to-br from-indigo-50 to-blue-50 no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                     🏘️ Desa Padelegan
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-indigo-400 to-blue-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
                     Desa pesisir yang kaya akan sumber daya alam dan budaya maritim yang lestari
                 </p>
             </div>
             
             <!-- Village Stats -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="text-4xl mb-4 wave-animation">👥</div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2" id="population-counter">0</h3>
-                    <p class="text-gray-600 font-medium">Total Penduduk</p>
-                    <div class="mt-4 text-sm text-gray-500">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl mb-4 wave-animation">👥</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2" id="population-counter">0</h3>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Total Penduduk</p>
+                    <div class="mt-4 text-xs md:text-sm text-gray-500">
                         <div class="flex justify-between">
                             <span>Laki-laki: 1,423</span>
                             <span>Perempuan: 1,424</span>
@@ -577,64 +628,64 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="text-4xl mb-4 float-animation">🗺️</div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Strategis</h3>
-                    <p class="text-gray-600 font-medium">Lokasi Pesisir</p>
-                    <p class="text-sm text-gray-500 mt-4">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl mb-4 float-animation">🗺️</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">Strategis</h3>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Lokasi Pesisir</p>
+                    <p class="text-xs md:text-sm text-gray-500 mt-4">
                         Akses mudah ke pusat ekonomi dan destinasi wisata
                     </p>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="text-4xl mb-4 wave-animation">🌊</div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Maritim</h3>
-                    <p class="text-gray-600 font-medium">Budaya Bahari</p>
-                    <p class="text-sm text-gray-500 mt-4">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-3xl md:text-4xl mb-4 wave-animation">🌊</div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">Maritim</h3>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Budaya Bahari</p>
+                    <p class="text-xs md:text-sm text-gray-500 mt-4">
                         Tradisi nelayan turun temurun
                     </p>
                 </div>
             </div>
 
             <!-- Demographics and Resources -->
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
                 <!-- Demographics -->
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="text-3xl mr-3">📊</span>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="text-2xl md:text-3xl mr-3">📊</span>
                         Segmentasi Penduduk
                     </h3>
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 bg-blue-50 rounded-xl">
+                        <div class="flex items-center justify-between p-3 md:p-4 bg-blue-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-2xl mr-3">👶</span>
-                                <span class="font-medium">Anak-anak (0-17 tahun)</span>
+                                <span class="text-xl md:text-2xl mr-3">👶</span>
+                                <span class="font-medium text-sm md:text-base">Anak-anak (0-17 tahun)</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold text-blue-600">28%</div>
-                                <div class="text-sm text-gray-500">797 jiwa</div>
+                                <div class="text-lg md:text-xl font-bold text-blue-600">28%</div>
+                                <div class="text-xs md:text-sm text-gray-500">797 jiwa</div>
                             </div>
                         </div>
                         
-                        <div class="flex items-center justify-between p-4 bg-green-50 rounded-xl">
+                        <div class="flex items-center justify-between p-3 md:p-4 bg-green-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-2xl mr-3">👨‍💼</span>
-                                <span class="font-medium">Dewasa (18-59 tahun)</span>
+                                <span class="text-xl md:text-2xl mr-3">👨‍💼</span>
+                                <span class="font-medium text-sm md:text-base">Dewasa (18-59 tahun)</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold text-green-600">58%</div>
-                                <div class="text-sm text-gray-500">1,651 jiwa</div>
+                                <div class="text-lg md:text-xl font-bold text-green-600">58%</div>
+                                <div class="text-xs md:text-sm text-gray-500">1,651 jiwa</div>
                             </div>
                         </div>
                         
-                        <div class="flex items-center justify-between p-4 bg-orange-50 rounded-xl">
+                        <div class="flex items-center justify-between p-3 md:p-4 bg-orange-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-2xl mr-3">👴</span>
-                                <span class="font-medium">Lansia (60+ tahun)</span>
+                                <span class="text-xl md:text-2xl mr-3">👴</span>
+                                <span class="font-medium text-sm md:text-base">Lansia (60+ tahun)</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold text-orange-600">14%</div>
-                                <div class="text-sm text-gray-500">399 jiwa</div>
+                                <div class="text-lg md:text-xl font-bold text-orange-600">14%</div>
+                                <div class="text-xs md:text-sm text-gray-500">399 jiwa</div>
                             </div>
                         </div>
                     </div>
@@ -642,52 +693,52 @@
 
                 <!-- Resources -->
                 <div class="space-y-6">
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                            <span class="text-3xl mr-3">🌊</span>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="text-2xl md:text-3xl mr-3">🌊</span>
                             Hasil Laut
                         </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center p-4 bg-blue-50 rounded-xl">
-                                <div class="text-2xl mb-2">🐟</div>
-                                <p class="text-sm font-medium">Ikan Segar</p>
+                        <div class="grid grid-cols-2 gap-3 md:gap-4">
+                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🐟</div>
+                                <p class="text-xs md:text-sm font-medium">Ikan Segar</p>
                             </div>
-                            <div class="text-center p-4 bg-blue-50 rounded-xl">
-                                <div class="text-2xl mb-2">🦐</div>
-                                <p class="text-sm font-medium">Udang</p>
+                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🦐</div>
+                                <p class="text-xs md:text-sm font-medium">Udang</p>
                             </div>
-                            <div class="text-center p-4 bg-blue-50 rounded-xl">
-                                <div class="text-2xl mb-2">🦀</div>
-                                <p class="text-sm font-medium">Kepiting</p>
+                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🦀</div>
+                                <p class="text-xs md:text-sm font-medium">Kepiting</p>
                             </div>
-                            <div class="text-center p-4 bg-blue-50 rounded-xl">
-                                <div class="text-2xl mb-2">🌿</div>
-                                <p class="text-sm font-medium">Rumput Laut</p>
+                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🌿</div>
+                                <p class="text-xs md:text-sm font-medium">Rumput Laut</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                            <span class="text-3xl mr-3">🌾</span>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="text-2xl md:text-3xl mr-3">🌾</span>
                             Hasil Pertanian
                         </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center p-4 bg-green-50 rounded-xl">
-                                <div class="text-2xl mb-2">🌾</div>
-                                <p class="text-sm font-medium">Padi</p>
+                        <div class="grid grid-cols-2 gap-3 md:gap-4">
+                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🌾</div>
+                                <p class="text-xs md:text-sm font-medium">Padi</p>
                             </div>
-                            <div class="text-center p-4 bg-green-50 rounded-xl">
-                                <div class="text-2xl mb-2">🌽</div>
-                                <p class="text-sm font-medium">Jagung</p>
+                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🌽</div>
+                                <p class="text-xs md:text-sm font-medium">Jagung</p>
                             </div>
-                            <div class="text-center p-4 bg-green-50 rounded-xl">
-                                <div class="text-2xl mb-2">🥥</div>
-                                <p class="text-sm font-medium">Kelapa</p>
+                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🥥</div>
+                                <p class="text-xs md:text-sm font-medium">Kelapa</p>
                             </div>
-                            <div class="text-center p-4 bg-green-50 rounded-xl">
-                                <div class="text-2xl mb-2">🥬</div>
-                                <p class="text-sm font-medium">Sayuran</p>
+                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
+                                <div class="text-xl md:text-2xl mb-2">🥬</div>
+                                <p class="text-xs md:text-sm font-medium">Sayuran</p>
                             </div>
                         </div>
                     </div>
@@ -697,31 +748,31 @@
     </section>
 
     <!-- Produk Lokal Section -->
-    <section id="produk" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    <section id="produk" class="py-12 md:py-16 lg:py-24 bg-white no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                     🛍️ Produk Lokal Unggulan
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
+                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
                     Produk berkualitas tinggi dari hasil laut dan pertanian Desa Padelegan
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🦐
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Kerupuk Udang Premium</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Kerupuk Udang Premium</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Kerupuk udang asli dari udang segar Pantai The Legend. Renyah, gurih, dan tanpa pengawet buatan.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-orange-600">Rp 25.000</span>
-                            <span class="text-sm text-gray-500">/pack</span>
+                            <span class="text-xl md:text-2xl font-bold text-orange-600">Rp 25.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/pack</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -732,17 +783,17 @@
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 gradient-ocean flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 gradient-ocean flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🐟
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Abon Ikan Kakap</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Abon Ikan Kakap</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Abon ikan kakap dengan cita rasa autentik. Dibuat dengan resep turun-temurun yang khas.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-blue-600">Rp 35.000</span>
-                            <span class="text-sm text-gray-500">/botol</span>
+                            <span class="text-xl md:text-2xl font-bold text-blue-600">Rp 35.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -753,17 +804,17 @@
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🧂
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Ikan Asin Kembung</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Asin Kembung</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Ikan asin kembung yang diproses secara tradisional. Cocok untuk berbagai masakan nusantara.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-600">Rp 20.000</span>
-                            <span class="text-sm text-gray-500">/kg</span>
+                            <span class="text-xl md:text-2xl font-bold text-gray-600">Rp 20.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/kg</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -774,17 +825,17 @@
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🥥
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Minyak Kelapa Murni</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Minyak Kelapa Murni</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Virgin coconut oil (VCO) dari kelapa segar lokal. 100% murni tanpa bahan kimia.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow-600">Rp 45.000</span>
-                            <span class="text-sm text-gray-500">/botol</span>
+                            <span class="text-xl md:text-2xl font-bold text-yellow-600">Rp 45.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -795,17 +846,17 @@
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🌿
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Rumput Laut Kering</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Rumput Laut Kering</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Rumput laut kering berkualitas tinggi, kaya nutrisi dan mineral alami dari laut.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-green-600">Rp 30.000</span>
-                            <span class="text-sm text-gray-500">/pack</span>
+                            <span class="text-xl md:text-2xl font-bold text-green-600">Rp 30.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/pack</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -816,17 +867,17 @@
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-6xl text-white group-hover:scale-110 transition-transform duration-300">
+                    <div class="h-40 md:h-48 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
                         🍯
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Petis Udang Asli</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Petis Udang Asli</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
                             Petis udang dengan resep rahasia keluarga. Penguat rasa alami untuk masakan tradisional.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-amber-600">Rp 15.000</span>
-                            <span class="text-sm text-gray-500">/botol</span>
+                            <span class="text-xl md:text-2xl font-bold text-amber-600">Rp 15.000</span>
+                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
                         </div>
                         <div class="mt-4">
                             <span class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium">
@@ -838,45 +889,175 @@
             </div>
 
             <!-- Call to Action -->
-            <div class="text-center mt-16">
-                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-8 text-white">
-                    <h3 class="text-2xl font-bold mb-4">Tertarik dengan Produk Kami?</h3>
-                    <p class="text-lg mb-6 opacity-90">
+            <div class="text-center mt-12 md:mt-16">
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 md:p-8 text-white">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Tertarik dengan Produk Kami?</h3>
+                    <p class="text-base md:text-lg mb-6 opacity-90">
                         Hubungi kami untuk pemesanan dan informasi lebih lanjut
                     </p>
-                    <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
-                        <a href="#" class="w-12 h-12 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                    <div class="flex justify-center space-x-4 mb-6">
+                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
                             💬
                         </a>
-                        <a href="#" class="w-12 h-12 bg-purple-500 hover:bg-purple-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-purple-500 hover:bg-purple-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
                             📧
                         </a>
-                        <a href="#" class="w-12 h-12 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
+                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
                             🌐
                         </a>
                     </div>
                     
                     <!-- Newsletter -->
                     <div class="bg-white bg-opacity-10 rounded-xl p-4">
-                        <h4 class="font-bold mb-3">📬 Newsletter</h4>
+                        <h4 class="font-bold mb-3 text-base md:text-lg">📬 Newsletter</h4>
                         <p class="text-sm text-blue-100 mb-4">Dapatkan update terbaru tentang Pantai The Legend</p>
-                        <div class="flex">
-                            <input type="email" placeholder="Email Anda" class="flex-1 px-3 py-2 rounded-l-lg bg-white bg-opacity-20 text-white placeholder-blue-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-300">
-                            <button class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-r-lg transition-colors">
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="email" placeholder="Email Anda" class="flex-1 px-3 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-white bg-opacity-20 text-white placeholder-blue-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <button class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none transition-colors">
                                 ➤
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="py-12 md:py-16 lg:py-24 bg-gradient-to-br from-purple-50 to-blue-50 no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                    🎥 Video Dokumentasi
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
+                    Saksikan keindahan Pantai The Legend dan proses pengolahan hasil laut dalam video dokumentasi kami
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative">
+                        <div class="h-48 md:h-64 gradient-sunset flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(1)">
+                            <div class="text-center">
+                                <div class="text-4xl md:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-1">▶️</div>
+                                <h3 class="text-lg md:text-xl font-bold">Keindahan Pantai The Legend</h3>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">
+                            🔴 LIVE
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Panorama Menakjubkan</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            Saksikan panorama menakjubkan Pantai The Legend dari udara dan permukaan. Video ini menampilkan keindahan alam yang masih asri dan aktivitas masyarakat lokal yang harmonis dengan alam.
+                        </p>
+                        <div class="flex items-center mt-4 text-xs md:text-sm text-gray-500">
+                            <span class="mr-4">⏱️ 5:30 menit</span>
+                            <span>👁️ 12.5K views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
+                    <div class="relative">
+                        <div class="h-48 md:h-64 gradient-ocean flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(2)">
+                            <div class="text-center">
+                                <div class="text-4xl md:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-2">🎬</div>
+                                <h3 class="text-lg md:text-xl font-bold">Pengolahan Hasil Laut</h3>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">
+                            🎯 HOT
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Dari Laut ke Meja</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                            Dokumentasi lengkap proses pengolahan hasil laut menjadi produk bernilai tinggi. Dari tangkapan segar hingga menjadi produk siap konsumsi dengan teknologi tradisional yang terjaga.
+                        </p>
+                        <div class="flex items-center mt-4 text-xs md:text-sm text-gray-500">
+                            <span class="mr-4">⏱️ 8:15 menit</span>
+                            <span>👁️ 8.7K views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-blue-600 mb-2">25+</div>
+                    <p class="text-gray-600 text-sm md:text-base">Video Dokumentasi</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-green-600 mb-2">50K+</div>
+                    <p class="text-gray-600 text-sm md:text-base">Total Views</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-purple-600 mb-2">2.5K</div>
+                    <p class="text-gray-600 text-sm md:text-base">Subscribers</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-orange-600 mb-2">95%</div>
+                    <p class="text-gray-600 text-sm md:text-base">Like Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-ocean text-white py-12 md:py-16 no-scroll-x">
+        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
+            <div class="grid md:grid-cols-1 gap-8 md:gap-12">
+                <!-- Contact Info -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 flex items-center justify-center md:justify-start">
+                        <span class="text-2xl md:text-3xl mr-3 wave-animation">🏖️</span>
+                        Pantai The Legend
+                    </h3>
+                    <p class="text-blue-100 mb-6 leading-relaxed text-sm md:text-base">
+                        Destinasi wisata bahari yang memadukan keindahan alam, kearifan lokal, dan potensi ekonomi masyarakat Desa Padelegan.
+                    </p>
+                    <div class="space-y-3">
+                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                            <span class="mr-3">📍</span>
+                            Desa Padelegan, Gresik, Jawa Timur
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                            <span class="mr-3">📞</span>
+                            +62 123 456 7890
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                            <span class="mr-3">📧</span>
+                            info@pantaithelegend.com
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg md:text-xl font-bold mb-6">Quick Links</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                        <a href="#sejarah" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📜 Sejarah</a>
+                        <a href="#ikan" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🐟 Ikan Lokal</a>
+                        <a href="#galeri" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📸 Galeri</a>
+                        <a href="#desa" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🏘️ Desa</a>
+                        <a href="#produk" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🛍️ Produk</a>
+                        <a href="#video" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🎥 Video</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Bottom Footer -->
-            <div class="border-t border-blue-400 border-opacity-30 mt-12 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-blue-100 text-sm mb-4 md:mb-0">
+            <div class="border-t border-blue-400 border-opacity-30 mt-8 md:mt-12 pt-6 md:pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                    <p class="text-blue-100 text-xs md:text-sm mb-4 md:mb-0">
                         &copy; 2025 Pantai The Legend - Desa Padelegan. Dikembangkan dengan ❤️ oleh Tim KKN
                     </p>
-                    <div class="flex space-x-6 text-sm text-blue-100">
+                    <div class="flex flex-wrap justify-center space-x-4 md:space-x-6 text-xs md:text-sm text-blue-100">
                         <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                         <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
                         <a href="#" class="hover:text-white transition-colors">Sitemap</a>
@@ -887,28 +1068,28 @@
     </footer>
 
     <!-- Floating Action Button -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <div class="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50">
         <div class="relative">
-            <button class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 pulse-glow" id="fab-main">
-                <span class="text-xl">💬</span>
+            <button class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 pulse-glow" id="fab-main">
+                <span class="text-lg md:text-xl">💬</span>
             </button>
             
             <!-- Sub FABs -->
-            <div class="absolute bottom-16 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300" id="fab-menu">
-                <button class="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="WhatsApp">
-                    <span class="text-lg">📱</span>
+            <div class="absolute bottom-12 md:bottom-16 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300" id="fab-menu">
+                <button class="w-10 h-10 md:w-12 md:h-12 bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="WhatsApp">
+                    <span class="text-sm md:text-lg">📱</span>
                 </button>
-                <button class="w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Email">
-                    <span class="text-lg">📧</span>
+                <button class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Email">
+                    <span class="text-sm md:text-lg">📧</span>
                 </button>
-                <button class="w-12 h-12 bg-red-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Telepon">
-                    <span class="text-lg">📞</span>
+                <button class="w-10 h-10 md:w-12 md:h-12 bg-red-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Telepon">
+                    <span class="text-sm md:text-lg">📞</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Weather Widget -->
+    <!-- Weather Widget - Hidden on mobile -->
     <div class="hidden lg:block fixed top-20 right-6 z-40">
         <div class="glass rounded-xl p-4 text-white w-48">
             <h4 class="font-bold mb-3 flex items-center">
@@ -1045,15 +1226,15 @@
                 modal.innerHTML = `
                     <div class="relative max-w-4xl w-full">
                         <div class="bg-white rounded-2xl overflow-hidden">
-                            <div class="h-96 ${item.querySelector('div').className}">
+                            <div class="h-64 md:h-96 ${item.querySelector('div').className}">
                                 ${item.querySelector('div').innerHTML}
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-2xl font-bold mb-2">${item.querySelector('h3').textContent}</h3>
-                                <p class="text-gray-600">${item.querySelector('p').textContent}</p>
+                            <div class="p-4 md:p-6">
+                                <h3 class="text-lg md:text-2xl font-bold mb-2">${item.querySelector('h3').textContent}</h3>
+                                <p class="text-gray-600 text-sm md:text-base">${item.querySelector('p').textContent}</p>
                             </div>
                         </div>
-                        <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition-colors" onclick="this.parentElement.parentElement.remove()">
+                        <button class="absolute top-4 right-4 text-white text-2xl md:text-3xl hover:text-gray-300 transition-colors" onclick="this.parentElement.parentElement.remove()">
                             ✕
                         </button>
                     </div>
@@ -1090,12 +1271,12 @@
             if (!fabOpen) {
                 fabMenu.style.opacity = '1';
                 fabMenu.style.transform = 'scale(1)';
-                fabMain.innerHTML = '<span class="text-xl">✕</span>';
+                fabMain.innerHTML = '<span class="text-lg md:text-xl">✕</span>';
                 fabOpen = true;
             } else {
                 fabMenu.style.opacity = '0';
                 fabMenu.style.transform = 'scale(0)';
-                fabMain.innerHTML = '<span class="text-xl">💬</span>';
+                fabMain.innerHTML = '<span class="text-lg md:text-xl">💬</span>';
                 fabOpen = false;
             }
         });
@@ -1139,10 +1320,10 @@
             const loader = document.createElement('div');
             loader.className = 'fixed inset-0 gradient-ocean flex items-center justify-center z-50';
             loader.innerHTML = `
-                <div class="text-center text-white">
-                    <div class="text-6xl mb-4 wave-animation">🏖️</div>
-                    <h2 class="text-2xl font-bold mb-4">Memuat Pantai The Legend...</h2>
-                    <div class="w-64 h-2 bg-white bg-opacity-30 rounded-full mx-auto overflow-hidden">
+                <div class="text-center text-white px-4">
+                    <div class="text-4xl md:text-6xl mb-4 wave-animation">🏖️</div>
+                    <h2 class="text-lg md:text-2xl font-bold mb-4">Memuat Pantai The Legend...</h2>
+                    <div class="w-48 md:w-64 h-2 bg-white bg-opacity-30 rounded-full mx-auto overflow-hidden">
                         <div class="h-full bg-white rounded-full animate-pulse" style="width: 0%; animation: loading 2s ease-in-out forwards;"></div>
                     </div>
                 </div>
@@ -1168,16 +1349,18 @@
             }, 2500);
         });
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.getElementById('home');
-            const rate = scrolled * -0.5;
-            
-            if (hero) {
-                hero.style.transform = `translateY(${rate}px)`;
-            }
-        });
+        // Add parallax effect to hero section (disabled on mobile for performance)
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.getElementById('home');
+                const rate = scrolled * -0.5;
+                
+                if (hero) {
+                    hero.style.transform = `translateY(${rate}px)`;
+                }
+            });
+        }
 
         // Add click ripple effect
         function createRipple(event) {
@@ -1247,152 +1430,28 @@
                 }, 500);
             });
         });
+
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Ensure no horizontal overflow
+        function checkHorizontalOverflow() {
+            const body = document.body;
+            const html = document.documentElement;
+            
+            if (body.scrollWidth > window.innerWidth || html.scrollWidth > window.innerWidth) {
+                body.style.overflowX = 'hidden';
+                html.style.overflowX = 'hidden';
+            }
+        }
+
+        // Check on load and resize
+        window.addEventListener('load', checkHorizontalOverflow);
+        window.addEventListener('resize', checkHorizontalOverflow);
     </script>
 </body>
-</html>="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors duration-300">
-                            📞 Hubungi Sekarang
-                        </a>
-                        <a href="#" class="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300">
-                            💬 Chat WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section id="video" class="py-16 md:py-24 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    🎥 Video Dokumentasi
-                </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-lg max-w-2xl mx-auto">
-                    Saksikan keindahan Pantai The Legend dan proses pengolahan hasil laut dalam video dokumentasi kami
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                    <div class="relative">
-                        <div class="h-64 gradient-sunset flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(1)">
-                            <div class="text-center">
-                                <div class="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-1">▶️</div>
-                                <h3 class="text-xl font-bold">Keindahan Pantai The Legend</h3>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                            🔴 LIVE
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Panorama Menakjubkan</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Saksikan panorama menakjubkan Pantai The Legend dari udara dan permukaan. Video ini menampilkan keindahan alam yang masih asri dan aktivitas masyarakat lokal yang harmonis dengan alam.
-                        </p>
-                        <div class="flex items-center mt-4 text-sm text-gray-500">
-                            <span class="mr-4">⏱️ 5:30 menit</span>
-                            <span>👁️ 12.5K views</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                    <div class="relative">
-                        <div class="h-64 gradient-ocean flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(2)">
-                            <div class="text-center">
-                                <div class="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-2">🎬</div>
-                                <h3 class="text-xl font-bold">Pengolahan Hasil Laut</h3>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                            🎯 HOT
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Dari Laut ke Meja</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Dokumentasi lengkap proses pengolahan hasil laut menjadi produk bernilai tinggi. Dari tangkapan segar hingga menjadi produk siap konsumsi dengan teknologi tradisional yang terjaga.
-                        </p>
-                        <div class="flex items-center mt-4 text-sm text-gray-500">
-                            <span class="mr-4">⏱️ 8:15 menit</span>
-                            <span>👁️ 8.7K views</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video Statistics -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">25+</div>
-                    <p class="text-gray-600">Video Dokumentasi</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-green-600 mb-2">50K+</div>
-                    <p class="text-gray-600">Total Views</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">2.5K</div>
-                    <p class="text-gray-600">Subscribers</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-orange-600 mb-2">95%</div>
-                    <p class="text-gray-600">Like Rate</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="gradient-ocean text-white py-16">
-        <div class="max-w-7xl mx-auto mobile-padding">
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 flex items-center">
-                        <span class="text-3xl mr-3 wave-animation">🏖️</span>
-                        Pantai The Legend
-                    </h3>
-                    <p class="text-blue-100 mb-6 leading-relaxed">
-                        Destinasi wisata bahari yang memadukan keindahan alam, kearifan lokal, dan potensi ekonomi masyarakat Desa Padelegan.
-                    </p>
-                    <div class="space-y-3">
-                        <p class="flex items-center text-blue-100">
-                            <span class="mr-3">📍</span>
-                            Desa Padelegan, Gresik, Jawa Timur
-                        </p>
-                        <p class="flex items-center text-blue-100">
-                            <span class="mr-3">📞</span>
-                            +62 123 456 7890
-                        </p>
-                        <p class="flex items-center text-blue-100">
-                            <span class="mr-3">📧</span>
-                            info@pantaithelegend.com
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
-                    <div class="space-y-3">
-                        <a href="#sejarah" class="block text-blue-100 hover:text-white transition-colors">📜 Sejarah Pantai</a>
-                        <a href="#ikan" class="block text-blue-100 hover:text-white transition-colors">🐟 Ikan Lokal</a>
-                        <a href="#galeri" class="block text-blue-100 hover:text-white transition-colors">📸 Galeri Foto</a>
-                        <a href="#desa" class="block text-blue-100 hover:text-white transition-colors">🏘️ Info Desa</a>
-                        <a href="#produk" class="block text-blue-100 hover:text-white transition-colors">🛍️ Produk Lokal</a>
-                        <a href="#video" class="block text-blue-100 hover:text-white transition-colors">🎥 Video</a>
-                    </div>
-                </div>
-
-                <!-- Social Media & Newsletter -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Stay Connected</h3>
-                    <div class="flex space-x-4 mb-6">
-                        <a href="#" class="w-12 h-12 bg-blue-500 hover:bg-blue-400 rounded-full flex items-center justify-center text-xl transition-colors duration-300">
-                            📱
-                        </a>
-                        <a href="#" class
+</html>
