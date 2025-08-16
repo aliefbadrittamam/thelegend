@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantai The Legend - Desa Padelegan</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2c3e50',
+                        secondary: '#3498db',
+                        accent: '#e74c3c',
+                        warning: '#f39c12',
+                        success: '#27ae60'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
+
         * {
             font-family: 'Poppins', sans-serif;
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
@@ -98,40 +115,95 @@
         }
 
         @keyframes swim-right {
-            0% { transform: translateX(-100px) rotate(0deg); }
-            50% { transform: translateX(50vw) rotate(10deg); }
-            100% { transform: translateX(calc(100vw + 100px)) rotate(0deg); }
+            0% {
+                transform: translateX(-100px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(50vw) rotate(10deg);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 100px)) rotate(0deg);
+            }
         }
 
         @keyframes swim-left {
-            0% { transform: translateX(calc(100vw + 100px)) scaleX(-1) rotate(0deg); }
-            50% { transform: translateX(50vw) scaleX(-1) rotate(-10deg); }
-            100% { transform: translateX(-100px) scaleX(-1) rotate(0deg); }
+            0% {
+                transform: translateX(calc(100vw + 100px)) scaleX(-1) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(50vw) scaleX(-1) rotate(-10deg);
+            }
+
+            100% {
+                transform: translateX(-100px) scaleX(-1) rotate(0deg);
+            }
         }
 
         @keyframes swim-diagonal {
-            0% { transform: translate(-100px, 0) rotate(45deg); }
-            25% { transform: translate(25vw, -50px) rotate(60deg); }
-            50% { transform: translate(50vw, 0) rotate(45deg); }
-            75% { transform: translate(75vw, -30px) rotate(30deg); }
-            100% { transform: translate(calc(100vw + 100px), 0) rotate(45deg); }
+            0% {
+                transform: translate(-100px, 0) rotate(45deg);
+            }
+
+            25% {
+                transform: translate(25vw, -50px) rotate(60deg);
+            }
+
+            50% {
+                transform: translate(50vw, 0) rotate(45deg);
+            }
+
+            75% {
+                transform: translate(75vw, -30px) rotate(30deg);
+            }
+
+            100% {
+                transform: translate(calc(100vw + 100px), 0) rotate(45deg);
+            }
         }
 
         @keyframes float-vertical {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-80px) rotate(10deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-80px) rotate(10deg);
+            }
         }
 
         @keyframes bounce-gentle {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
 
         @keyframes swim-slow {
-            0% { transform: translateX(-150px) rotate(0deg); }
-            33% { transform: translateX(30vw) rotate(5deg); }
-            66% { transform: translateX(70vw) rotate(-5deg); }
-            100% { transform: translateX(calc(100vw + 150px)) rotate(0deg); }
+            0% {
+                transform: translateX(-150px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateX(30vw) rotate(5deg);
+            }
+
+            66% {
+                transform: translateX(70vw) rotate(-5deg);
+            }
+
+            100% {
+                transform: translateX(calc(100vw + 150px)) rotate(0deg);
+            }
         }
 
         /* Hamburger Menu Animation */
@@ -153,18 +225,39 @@
 
         /* Custom Animations */
         @keyframes wave {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(69, 183, 209, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(69, 183, 209, 0.6); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(69, 183, 209, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(69, 183, 209, 0.6);
+            }
         }
 
         .wave-animation {
@@ -228,22 +321,22 @@
             .mobile-grid-fix {
                 grid-template-columns: 1fr;
             }
-            
+
             .mobile-text-center {
                 text-align: center;
             }
-            
+
             .mobile-space-y {
                 margin-bottom: 1rem;
             }
-            
+
             .mobile-btn-stack {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
                 width: 100%;
             }
-            
+
             .mobile-btn-stack a {
                 width: 100%;
                 text-align: center;
@@ -257,6 +350,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50 no-scroll-x">
     <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator" id="scrollProgress"></div>
@@ -288,19 +382,29 @@
                     <!-- Desktop Navigation -->
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#home" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Beranda</a>
-                            <a href="#sejarah" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sejarah</a>
-                            <a href="#ikan" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Ikan Lokal</a>
-                            <a href="#galeri" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
-                            <a href="#desa" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Desa</a>
-                            <a href="#produk" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Produk</a>
-                            <a href="#video" class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Video</a>
+                            <a href="#home"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Beranda</a>
+                            <a href="#sejarah"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Sejarah</a>
+                            <a href="#ikan"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Ikan
+                                Lokal</a>
+                            <a href="#galeri"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
+                            <a href="#desa"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Desa</a>
+                            <a href="#produk"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Produk</a>
+                            <a href="#video"
+                                class="text-white hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium transition-colors">Video</a>
                         </div>
                     </div>
 
                     <!-- Mobile menu button -->
                     <div class="md:hidden">
-                        <button type="button" class="text-white hover:text-blue-200 focus:outline-none focus:text-blue-200 transition-colors p-2" id="mobile-menu-button">
+                        <button type="button"
+                            class="text-white hover:text-blue-200 focus:outline-none focus:text-blue-200 transition-colors p-2"
+                            id="mobile-menu-button">
                             <div class="w-6 h-6 flex flex-col justify-center items-center space-y-1">
                                 <span class="hamburger-line w-6 h-0.5 bg-white block"></span>
                                 <span class="hamburger-line w-6 h-0.5 bg-white block"></span>
@@ -314,46 +418,86 @@
             <!-- Mobile Navigation Menu -->
             <div class="md:hidden hidden" id="mobile-menu">
                 <div class="mobile-container px-4 pt-2 pb-3 space-y-1 glass">
-                    <a href="#home" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏠 Beranda</a>
-                    <a href="#sejarah" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📜 Sejarah</a>
-                    <a href="#ikan" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🐟 Ikan Lokal</a>
-                    <a href="#galeri" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📸 Galeri</a>
-                    <a href="#desa" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏘️ Desa</a>
-                    <a href="#produk" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🛍️ Produk</a>
-                    <a href="#video" class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🎥 Video</a>
+                    <a href="#home"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏠
+                        Beranda</a>
+                    <a href="#sejarah"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📜
+                        Sejarah</a>
+                    <a href="#ikan"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🐟
+                        Ikan Lokal</a>
+                    <a href="#galeri"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">📸
+                        Galeri</a>
+                    <a href="#desa"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🏘️
+                        Desa</a>
+                    <a href="#produk"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🛍️
+                        Produk</a>
+                    <a href="#video"
+                        class="text-white hover:text-blue-200 block px-3 py-2 rounded-md text-base font-medium transition-colors">🎥
+                        Video</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen gradient-ocean wave-bg no-scroll-x">
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-        <div class="relative z-10 flex items-center justify-center h-full text-center text-white mobile-padding">
-            <div class="mobile-container max-w-4xl mx-auto">
-                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 float-animation px-2">
+    <section id="home"
+        style="position: relative; height: 100vh; overflow-x: hidden; max-width: 100vw; background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 120\' preserveAspectRatio=\'none\'%3e%3cpath d=\'M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z\' fill=\'%23ffffff\' fill-opacity=\'0.1\'/%3e%3c/svg%3e'); background-size: cover; background-position: bottom;">
+        <!-- Background Slider -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
+            <div style="position: relative; width: 100%; height: 100%;">
+                <div class="slider-image active"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 1; transition: opacity 1s ease-in-out; z-index: 1; background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'), linear-gradient(135deg, #0066CC 0%, #003D82 50%, #001F3F 100%);">
+                </div>
+                <div class="slider-image"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80'), linear-gradient(135deg, #0066CC 0%, #003D82 50%, #001F3F 100%);">
+                </div>
+                <div class="slider-image"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; background-image: url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80'), linear-gradient(135deg, #0066CC 0%, #003D82 50%, #001F3F 100%);">
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.3);">
+        </div>
+        <div
+            style="position: relative; z-index: 10; display: flex; align-items: center; justify-content: center; height: 100%; text-align: center; color: white; padding-left: 1rem; padding-right: 1rem;">
+            <div style="width: 100%; max-width: 56rem; margin: 0 auto; overflow-x: hidden;">
+                <h1
+                    style="font-size: 1.875rem; font-weight: bold; margin-bottom: 1.5rem; padding: 0 0.5rem; animation: float 2s ease-in-out infinite;">
                     Pantai The Legend
                 </h1>
-                <p class="text-base md:text-lg lg:text-xl mb-8 opacity-90 leading-relaxed px-2">
-                    Keindahan alam yang memukau di Desa Padelegan, tempat di mana legenda dan kenyataan bertemu dalam harmoni sempurna
+                <p style="font-size: 1rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.625; padding: 0 0.5rem;">
+                    Keindahan alam yang memukau di Desa Padelegan, tempat di mana legenda dan kenyataan bertemu dalam
+                    harmoni sempurna
                 </p>
-                <div class="mobile-btn-stack md:space-y-0 md:space-x-4 md:flex md:justify-center">
-                    <a href="#sejarah" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105 pulse-glow">
+                <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+                    <a href="#sejarah"
+                        style="display: inline-block; background: linear-gradient(90deg, #3B82F6, #06B6D4); color: white; font-weight: bold; padding: 0.75rem 2rem; border-radius: 9999px; transition: all 0.3s; transform: scale(1); text-decoration: none; animation: pulse-glow 2s ease-in-out infinite; width: 100%; text-align: center;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         Jelajahi Sekarang 🌊
                     </a>
-                    <a href="#produk" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-6 md:px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <a href="#produk"
+                        style="display: inline-block; background: transparent; border: 2px solid white; color: white; font-weight: bold; padding: 0.75rem 2rem; border-radius: 9999px; transition: all 0.3s; transform: scale(1); text-decoration: none; width: 100%; text-align: center;"
+                        onmouseover="this.style.background='white'; this.style.color='#1E40AF'; this.style.transform='scale(1.05)'"
+                        onmouseout="this.style.background='transparent'; this.style.color='white'; this.style.transform='scale(1)'">
                         Produk Lokal 🛍️
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-            <div class="flex flex-col items-center">
-                <span class="text-xs md:text-sm mb-2">Scroll untuk melihat lebih</span>
-                <svg class="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        <div
+            style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: white; animation: bounce 1s infinite;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="font-size: 0.875rem; margin-bottom: 0.5rem;">Scroll untuk melihat lebih</span>
+                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </div>
         </div>
@@ -368,38 +512,48 @@
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full"></div>
             </div>
-            
+
             <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="space-y-6 order-2 lg:order-1">
-                    <div class="bg-blue-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                    <div
+                        class="bg-blue-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
                         <p class="text-gray-700 leading-relaxed text-base md:text-lg">
-                            Pantai The Legend memiliki sejarah yang kaya dan penuh makna bagi masyarakat Desa Padelegan. Konon, pantai ini mendapat namanya dari legenda kuno yang diturunkan secara turun-temurun oleh nenek moyang.
+                            Pantai The Legend memiliki sejarah yang kaya dan penuh makna bagi masyarakat Desa Padelegan.
+                            Konon, pantai ini mendapat namanya dari legenda kuno yang diturunkan secara turun-temurun
+                            oleh nenek moyang.
                         </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+
+                    <div
+                        class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
                         <p class="text-gray-700 leading-relaxed text-base md:text-lg">
-                            Menurut cerita rakyat setempat, pantai ini dulunya merupakan tempat persinggahan para nelayan legendaris yang memiliki kemampuan luar biasa dalam menangkap ikan. Mereka dipercaya memiliki hubungan spiritual dengan laut.
+                            Menurut cerita rakyat setempat, pantai ini dulunya merupakan tempat persinggahan para
+                            nelayan legendaris yang memiliki kemampuan luar biasa dalam menangkap ikan. Mereka dipercaya
+                            memiliki hubungan spiritual dengan laut.
                         </p>
                     </div>
-                    
-                    <div class="bg-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
+
+                    <div
+                        class="bg-cyan-50 p-4 md:p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300">
                         <p class="text-gray-700 leading-relaxed text-base md:text-lg">
-                            Hingga kini, Pantai The Legend tetap menjadi simbol kemakmuran dan keberkahan, serta destinasi wisata yang memadukan keindahan alam dengan kearifan lokal.
+                            Hingga kini, Pantai The Legend tetap menjadi simbol kemakmuran dan keberkahan, serta
+                            destinasi wisata yang memadukan keindahan alam dengan kearifan lokal.
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="flex justify-center order-1 lg:order-2">
                     <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 gradient-sunset rounded-3xl shadow-2xl transform hover:rotate-3 transition-all duration-500 flex items-center justify-center">
+                        <div
+                            class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 gradient-sunset rounded-3xl shadow-2xl transform hover:rotate-3 transition-all duration-500 flex items-center justify-center">
                             <div class="text-center text-white">
                                 <div class="text-4xl md:text-6xl mb-4 wave-animation">🏛️</div>
                                 <h3 class="text-xl md:text-2xl font-bold">Legenda Hidup</h3>
                                 <p class="text-base md:text-lg opacity-90">Warisan Nenek Moyang</p>
                             </div>
                         </div>
-                        <div class="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20 bg-yellow-400 rounded-full flex items-center justify-center text-xl md:text-2xl shadow-lg float-animation">
+                        <div
+                            class="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20 bg-yellow-400 rounded-full flex items-center justify-center text-xl md:text-2xl shadow-lg float-animation">
                             ⭐
                         </div>
                     </div>
@@ -417,84 +571,103 @@
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
                 <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
-                    Pantai The Legend kaya akan berbagai jenis ikan dan hasil laut yang menjadi sumber kehidupan masyarakat setempat
+                    Pantai The Legend kaya akan berbagai jenis ikan dan hasil laut yang menjadi sumber kehidupan
+                    masyarakat setempat
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 wave-animation">🐟</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Kakap</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Ikan kakap merah dan putih yang sering ditemukan di perairan pantai. Memiliki rasa daging yang lezat dan tekstur yang kenyal.
+                            Ikan kakap merah dan putih yang sering ditemukan di perairan pantai. Memiliki rasa daging
+                            yang lezat dan tekstur yang kenyal.
                         </p>
-                        <div class="mt-4 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Premium Quality
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 float-animation">🦐</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Udang Jerbung</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Udang lokal berukuran besar dengan cita rasa manis alami. Biasanya ditangkap menggunakan jaring tradisional.
+                            Udang lokal berukuran besar dengan cita rasa manis alami. Biasanya ditangkap menggunakan
+                            jaring tradisional.
                         </p>
-                        <div class="mt-4 inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Fresh Daily
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 wave-animation">🐠</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Kembung</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Ikan pelagis kecil yang melimpah di perairan sekitar. Sumber protein tinggi dan omega-3 untuk masyarakat lokal.
+                            Ikan pelagis kecil yang melimpah di perairan sekitar. Sumber protein tinggi dan omega-3
+                            untuk masyarakat lokal.
                         </p>
-                        <div class="mt-4 inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             High Omega-3
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 float-animation">🦀</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Kepiting Bakau</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Kepiting yang hidup di area mangrove sekitar pantai. Memiliki daging yang gurih dan sering dijadikan makanan khas.
+                            Kepiting yang hidup di area mangrove sekitar pantai. Memiliki daging yang gurih dan sering
+                            dijadikan makanan khas.
                         </p>
-                        <div class="mt-4 inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Local Delicacy
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 wave-animation">🐙</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Cumi-Cumi</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Cephalopoda yang banyak ditemukan di malam hari. Menjadi hasil tangkapan favorit nelayan dengan perahu lampu.
+                            Cephalopoda yang banyak ditemukan di malam hari. Menjadi hasil tangkapan favorit nelayan
+                            dengan perahu lampu.
                         </p>
-                        <div class="mt-4 inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Night Catch
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-4 md:p-6 transform hover:scale-105 hover:shadow-xl transition-all duration-300">
                     <div class="text-center">
                         <div class="text-4xl md:text-5xl mb-4 float-animation">🐡</div>
                         <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Baronang</h3>
                         <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Ikan herbivora yang hidup di terumbu karang. Memiliki kandungan gizi tinggi dan rasa yang khas.
+                            Ikan herbivora yang hidup di terumbu karang. Memiliki kandungan gizi tinggi dan rasa yang
+                            khas.
                         </p>
-                        <div class="mt-4 inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                        <div
+                            class="mt-4 inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs md:text-sm font-medium">
                             Reef Fish
                         </div>
                     </div>
@@ -512,15 +685,18 @@
                 </h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-pink-400 to-blue-400 mx-auto rounded-full"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-orange-400 to-pink-500 h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            🌅
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-1.jpg" alt="Sunrise Spektakuler" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video bg-gradient-to-br from-orange-400 to-pink-500 h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        🌅
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Sunrise Spektakuler</h3>
                             <p class="text-xs md:text-sm opacity-90">Momen matahari terbit yang memukau</p>
@@ -528,13 +704,16 @@
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video gradient-ocean h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            ⛵
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-2.jpg" alt="Perahu Nelayan" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video gradient-ocean h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        ⛵
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Perahu Nelayan</h3>
                             <p class="text-xs md:text-sm opacity-90">Kehidupan nelayan tradisional</p>
@@ -542,13 +721,16 @@
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video gradient-coral h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            👥
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-3.jpg" alt="Dokumentasi KKN" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video gradient-coral h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        👥
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Dokumentasi KKN</h3>
                             <p class="text-xs md:text-sm opacity-90">Kegiatan mahasiswa KKN</p>
@@ -556,13 +738,16 @@
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video gradient-sunset h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            🌊
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-4.jpg" alt="Ombak Pantai" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video gradient-sunset h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        🌊
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Ombak Pantai</h3>
                             <p class="text-xs md:text-sm opacity-90">Keindahan ombak alami</p>
@@ -570,13 +755,16 @@
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-yellow-400 to-orange-500 h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            🌅
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-5.jpg" alt="Golden Hour" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video bg-gradient-to-br from-yellow-400 to-orange-500 h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        🌅
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Golden Hour</h3>
                             <p class="text-xs md:text-sm opacity-90">Keindahan sore hari di pantai</p>
@@ -584,13 +772,16 @@
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
-                    <div class="aspect-square md:aspect-video bg-gradient-to-br from-green-400 to-blue-500 h-48 md:h-64">
-                        <div class="flex items-center justify-center text-white text-3xl md:text-4xl h-full">
-                            🏖️
-                        </div>
+                <div
+                    class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300">
+                    <img src="galery-6.jpg" alt="Pantai Bersih" class="w-full h-48 md:h-64 object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="aspect-square md:aspect-video bg-gradient-to-br from-green-400 to-blue-500 h-48 md:h-64 hidden items-center justify-center text-white text-3xl md:text-4xl">
+                        🏖️
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h3 class="text-sm md:text-lg font-bold">Pantai Bersih</h3>
                             <p class="text-xs md:text-sm opacity-90">Pantai yang terjaga kelestariannya</p>
@@ -613,10 +804,11 @@
                     Desa pesisir yang kaya akan sumber daya alam dan budaya maritim yang lestari
                 </p>
             </div>
-            
+
             <!-- Village Stats -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
                     <div class="text-3xl md:text-4xl mb-4 wave-animation">👥</div>
                     <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2" id="population-counter">0</h3>
                     <p class="text-gray-600 font-medium text-sm md:text-base">Total Penduduk</p>
@@ -628,7 +820,8 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
                     <div class="text-3xl md:text-4xl mb-4 float-animation">🗺️</div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">Strategis</h3>
                     <p class="text-gray-600 font-medium text-sm md:text-base">Lokasi Pesisir</p>
@@ -637,7 +830,8 @@
                     </p>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center transform hover:scale-105 transition-all duration-300">
                     <div class="text-3xl md:text-4xl mb-4 wave-animation">🌊</div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2">Maritim</h3>
                     <p class="text-gray-600 font-medium text-sm md:text-base">Budaya Bahari</p>
@@ -652,51 +846,140 @@
                 <!-- Demographics -->
                 <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
                     <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                        <span class="text-2xl md:text-3xl mr-3">📊</span>
-                        Segmentasi Penduduk
+                        <span class="text-2xl md:text-3xl mr-3">💼</span>
+                        Mata Pencaharian Pokok
                     </h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between p-3 md:p-4 bg-blue-50 rounded-xl">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-xl md:text-2xl mr-3">👶</span>
-                                <span class="font-medium text-sm md:text-base">Anak-anak (0-17 tahun)</span>
+                                <span class="text-lg mr-2">🌊</span>
+                                <span class="font-medium text-sm">Nelayan</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-lg md:text-xl font-bold text-blue-600">28%</div>
-                                <div class="text-xs md:text-sm text-gray-500">797 jiwa</div>
+                                <div class="text-lg font-bold text-blue-600">830</div>
+                                <div class="text-xs text-gray-500">L: 830, P: 0</div>
                             </div>
                         </div>
-                        
-                        <div class="flex items-center justify-between p-3 md:p-4 bg-green-50 rounded-xl">
+
+                        <div class="flex items-center justify-between p-3 bg-pink-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-xl md:text-2xl mr-3">👨‍💼</span>
-                                <span class="font-medium text-sm md:text-base">Dewasa (18-59 tahun)</span>
+                                <span class="text-lg mr-2">🏠</span>
+                                <span class="font-medium text-sm">Ibu Rumah Tangga</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-lg md:text-xl font-bold text-green-600">58%</div>
-                                <div class="text-xs md:text-sm text-gray-500">1,651 jiwa</div>
+                                <div class="text-lg font-bold text-pink-600">970</div>
+                                <div class="text-xs text-gray-500">L: 0, P: 970</div>
                             </div>
                         </div>
-                        
-                        <div class="flex items-center justify-between p-3 md:p-4 bg-orange-50 rounded-xl">
+
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-xl">
                             <div class="flex items-center">
-                                <span class="text-xl md:text-2xl mr-3">👴</span>
-                                <span class="font-medium text-sm md:text-base">Lansia (60+ tahun)</span>
+                                <span class="text-lg mr-2">🎓</span>
+                                <span class="font-medium text-sm">Pelajar</span>
                             </div>
                             <div class="text-right">
-                                <div class="text-lg md:text-xl font-bold text-orange-600">14%</div>
-                                <div class="text-xs md:text-sm text-gray-500">399 jiwa</div>
+                                <div class="text-lg font-bold text-purple-600">671</div>
+                                <div class="text-xs text-gray-500">L: 326, P: 345</div>
                             </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-lg mr-2">🌾</span>
+                                <span class="font-medium text-sm">Petani</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-green-600">287</div>
+                                <div class="text-xs text-gray-500">L: 146, P: 141</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-orange-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-lg mr-2">💼</span>
+                                <span class="font-medium text-sm">Wiraswasta</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-orange-600">120</div>
+                                <div class="text-xs text-gray-500">L: 120, P: 0</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-lg mr-2">🛒</span>
+                                <span class="font-medium text-sm">Pedagang Keliling</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-600">50</div>
+                                <div class="text-xs text-gray-500">L: 5, P: 45</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-indigo-50 rounded-xl">
+                            <div class="flex items-center">
+                                <span class="text-lg mr-2">🏛️</span>
+                                <span class="font-medium text-sm">PNS</span>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-indigo-600">42</div>
+                                <div class="text-xs text-gray-500">L: 25, P: 17</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4 p-3 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl">
+                            <div class="text-xl font-bold text-gray-800">Total: 3,013 Jiwa</div>
+                            <div class="text-sm text-gray-600">Laki-laki: 1,494 | Perempuan: 1,519</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Resources -->
+                <!-- Livelihood Chart -->
                 <div class="space-y-6">
                     <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
                         <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="text-2xl md:text-3xl mr-3">📊</span>
+                            Grafik Mata Pencaharian
+                        </h3>
+                        <!-- Chart Container -->
+                        <div class="relative">
+                            <canvas id="livelihoodChart" width="400" height="300"
+                                class="w-full max-h-64"></canvas>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="grid grid-cols-2 gap-2 mt-4 text-xs">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue-500 rounded mr-2"></div>
+                                <span>Nelayan (28%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-pink-500 rounded mr-2"></div>
+                                <span>Ibu RT (32%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-purple-500 rounded mr-2"></div>
+                                <span>Pelajar (22%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded mr-2"></div>
+                                <span>Petani (10%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-orange-500 rounded mr-2"></div>
+                                <span>Wiraswasta (4%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-gray-500 rounded mr-2"></div>
+                                <span>Lainnya (4%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
                             <span class="text-2xl md:text-3xl mr-3">🌊</span>
-                            Hasil Laut
+                            Hasil Laut & Pertanian
                         </h3>
                         <div class="grid grid-cols-2 gap-3 md:gap-4">
                             <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
@@ -707,302 +990,719 @@
                                 <div class="text-xl md:text-2xl mb-2">🦐</div>
                                 <p class="text-xs md:text-sm font-medium">Udang</p>
                             </div>
-                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
-                                <div class="text-xl md:text-2xl mb-2">🦀</div>
-                                <p class="text-xs md:text-sm font-medium">Kepiting</p>
-                            </div>
-                            <div class="text-center p-3 md:p-4 bg-blue-50 rounded-xl">
-                                <div class="text-xl md:text-2xl mb-2">🌿</div>
-                                <p class="text-xs md:text-sm font-medium">Rumput Laut</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                            <span class="text-2xl md:text-3xl mr-3">🌾</span>
-                            Hasil Pertanian
-                        </h3>
-                        <div class="grid grid-cols-2 gap-3 md:gap-4">
                             <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
                                 <div class="text-xl md:text-2xl mb-2">🌾</div>
                                 <p class="text-xs md:text-sm font-medium">Padi</p>
                             </div>
                             <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
-                                <div class="text-xl md:text-2xl mb-2">🌽</div>
-                                <p class="text-xs md:text-sm font-medium">Jagung</p>
-                            </div>
-                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
                                 <div class="text-xl md:text-2xl mb-2">🥥</div>
                                 <p class="text-xs md:text-sm font-medium">Kelapa</p>
                             </div>
-                            <div class="text-center p-3 md:p-4 bg-green-50 rounded-xl">
-                                <div class="text-xl md:text-2xl mb-2">🥬</div>
-                                <p class="text-xs md:text-sm font-medium">Sayuran</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Section -->
+                <div
+                    class="bg-primary text-white text-center py-16 px-8 mb-8 rounded-2xl shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+                    <div class="relative z-10">
+                        <h1 class="text-4xl lg:text-5xl font-bold mb-4">DESA PADELEGAN</h1>
+                        <p class="text-xl opacity-90 mb-2">Kecamatan Pademawu, Kabupaten Pamekasan</p>
+                        <p class="text-lg italic opacity-80">"Kampung Teri" - Titik Ru'yatul Hilal</p>
+                    </div>
+                </div>
+
+                <!-- Profil dan Sejarah Desa -->
+                <div
+                    class="bg-white rounded-xl shadow-lg mb-8 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-primary text-white p-6">
+                        <h2 class="text-2xl font-bold mb-2">Profil dan Sejarah Desa</h2>
+                        <p class="opacity-90">Sejarah dan asal muasal nama Desa Padelegan</p>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <div class="bg-secondary text-white p-6 rounded-lg mb-6">
+                            <h3 class="text-xl font-bold mb-4">Asal Nama "Padelegan"</h3>
+                            <p class="leading-relaxed">Nama desa ini berasal dari kata <span
+                                    class="font-bold">"Padhelengan"</span> dalam bahasa Jawa yang memiliki arti <span
+                                    class="font-bold">"Tempat untuk melihat bulan"</span>. Dalam Islam, melihat bulan
+                                adalah salah satu cara untuk menentukan awal dan akhir bulan Hijriyah.</p>
+                        </div>
+
+                        <p class="text-justify mb-6 leading-relaxed">Desa Padelegan adalah salah satu desa di Kecamatan
+                            Pademawu Kabupaten Pamekasan. Asal mula desa Padelegan ini adalah tempat atau titik lokasi
+                            dalam menentukan permulaan bulan dalam kalender Hijriyah yang dapat disebut sebagai lokasi
+                            ru'yatul hilal.</p>
+
+                        <p class="text-justify mb-6 leading-relaxed">Padelengan berubah menjadi Padelegan dikarenakan
+                            keunikan pelafalan warga sekitar jaman dahulu dan akhirnya diambilah kata "Padelegan"
+                            sebagai nama desa ini. Meskipun dalam penulisan/pengucapannya berubah namun tidak merubah
+                            dari arti kata tersebut, karena hingga saat ini di desa ini juga masih dijadikan salah satu
+                            titik pantau/titik melihat bulan.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mt-8">
+                            <div class="bg-orange-50 border-l-4 border-accent p-6 rounded-r-lg">
+                                <h4 class="text-accent font-bold text-lg mb-3">Keunikan Desa</h4>
+                                <p class="leading-relaxed">Terkenal sebagai <span class="font-bold">"Kampung
+                                        Teri"</span> dan lokasi ru'yatul hilal untuk menentukan awal bulan Hijriyah,
+                                    terutama untuk menentukan awal dan akhir Ramadhan atau awal tahun Hijriyah.</p>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-secondary p-6 rounded-r-lg">
+                                <h4 class="text-secondary font-bold text-lg mb-3">Mata Pencaharian Utama</h4>
+                                <p class="leading-relaxed">Mayoritas masyarakat bekerja sebagai <span
+                                        class="font-bold">nelayan</span> karena letak geografis di wilayah pesisir,
+                                    serta sebagai petani dan petani garam.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <!-- Wilayah Desa -->
+                <div
+                    class="bg-white rounded-xl shadow-lg mb-8 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-primary text-white p-6">
+                        <h2 class="text-2xl font-bold mb-2">Wilayah Desa Padelegan</h2>
+                        <p class="opacity-90">Informasi geografis dan batas wilayah</p>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                            <div class="bg-blue-50 p-6 rounded-xl text-center border-2 border-blue-100">
+                                <div class="text-3xl font-bold text-primary mb-2">906,7</div>
+                                <div class="text-gray-600">Km² Luas Wilayah</div>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-xl text-center border-2 border-green-100">
+                                <div class="text-3xl font-bold text-success mb-2">7</div>
+                                <div class="text-gray-600">Km ke Kecamatan</div>
+                            </div>
+                            <div class="bg-yellow-50 p-6 rounded-xl text-center border-2 border-yellow-100">
+                                <div class="text-3xl font-bold text-warning mb-2">15</div>
+                                <div class="text-gray-600">Km ke Kabupaten</div>
+                            </div>
+                            <div class="bg-red-50 p-6 rounded-xl text-center border-2 border-red-100">
+                                <div class="text-3xl font-bold text-accent mb-2">130</div>
+                                <div class="text-gray-600">Km ke Ibu Kota Provinsi</div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-primary mb-6">Batas Wilayah:</h3>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                            <div class="bg-orange-50 border-l-4 border-warning p-5 rounded-r-lg">
+                                <h4 class="font-bold text-warning mb-2">Sebelah Timur</h4>
+                                <p>Desa Tanjung</p>
+                            </div>
+                            <div class="bg-blue-50 border-l-4 border-secondary p-5 rounded-r-lg">
+                                <h4 class="font-bold text-secondary mb-2">Sebelah Barat</h4>
+                                <p>Desa Majungan</p>
+                            </div>
+                            <div class="bg-green-50 border-l-4 border-success p-5 rounded-r-lg">
+                                <h4 class="font-bold text-success mb-2">Sebelah Utara</h4>
+                                <p>Desa Tanjung</p>
+                            </div>
+                            <div class="bg-red-50 border-l-4 border-accent p-5 rounded-r-lg">
+                                <h4 class="font-bold text-accent mb-2">Sebelah Selatan</h4>
+                                <p>Selat Madura</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-primary mb-6">Dusun-Dusun di Padelegan:</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Laok Tambak</span> - Wilayah pesisir dengan mata
+                                pencaharian nelayan
+                            </div>
+                            <div class="bg-gray-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Asam Batur</span> - Wilayah pesisir dengan mata
+                                pencaharian nelayan
+                            </div>
+                            <div class="bg-gray-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Muarah</span> - Wilayah pesisir dengan mata pencaharian
+                                nelayan
+                            </div>
+                            <div class="bg-gray-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Dejeh Tambak</span> - Wilayah pesisir dengan mata
+                                pencaharian nelayan
+                            </div>
+                            <div class="bg-gray-50 border-l-4 border-success p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Modung</span> - Wilayah pertanian
+                            </div>
+                            <div class="bg-gray-50 border-l-4 border-success p-4 rounded-r-lg">
+                                <span class="font-bold">Dusun Bangkal</span> - Wilayah pertanian
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sumber Daya Desa -->
+                <div
+                    class="bg-white rounded-xl shadow-lg mb-8 overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="bg-primary text-white p-6">
+                        <h2 class="text-2xl font-bold mb-2">Sumber Daya Desa</h2>
+                        <p class="opacity-90">Potensi alam dan sumber daya manusia</p>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-100">
+                                <h4 class="text-2xl font-bold text-secondary mb-6">🌊 Sumber Daya Alam</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-secondary">
+                                        <span class="font-bold">🐟 Hasil Tangkapan Laut:</span> Teri, cumi, kerang laut
+                                        lorjuk, kepiting laut rajungan
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-secondary">
+                                        <span class="font-bold">🧂 Garam:</span> Produksi garam sebagai mata
+                                        pencaharian alternatif
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-secondary">
+                                        <span class="font-bold">🌴 Hutan Mangrove:</span> Ekosistem pesisir yang
+                                        terjaga
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-secondary">
+                                        <span class="font-bold">🏖️ Pantai The Legend:</span> Objek wisata pantai
+                                        unggulan
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-green-50 rounded-xl p-6 border-2 border-green-100">
+                                <h4 class="text-2xl font-bold text-success mb-6">👥 Sumber Daya Manusia</h4>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-success">
+                                        <span class="font-bold">🎓 Pendidikan:</span> 2 Taman Kanak-kanak, 1 Sekolah
+                                        Dasar, 2 Madrasah
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-success">
+                                        <span class="font-bold">🏥 Kesehatan:</span> Posyandu dan Pos Kesehatan
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-success">
+                                        <span class="font-bold">👨‍👩‍👧‍👦 Organisasi:</span> Karang Taruna, Remaja
+                                        Masjid, PKK
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg border-l-4 border-success">
+                                        <span class="font-bold">💼 Ekonomi:</span> Pengolahan produk ikan hasil
+                                        tangkapan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visi dan Misi -->
+                <div class="bg-primary text-white rounded-xl shadow-lg p-8 mb-8">
+                    <h2 class="text-3xl font-bold text-center mb-8">Visi dan Misi Desa</h2>
+
+                    <div class="bg-white bg-opacity-10 rounded-xl p-8 mb-8 text-center">
+                        <h3 class="text-2xl font-bold mb-4">🎯 VISI</h3>
+                        <p class="text-xl font-bold">"Bersama Mari Kita Wujudkan Kesuksesan"</p>
+                    </div>
+
+                    <div class="bg-white bg-opacity-10 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">🎯 MISI</h3>
+                        <div class="space-y-4">
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Mewujudkan Pemerintahan yang sinergi dan harmonis serta berpihak kepada kepentingan
+                                masyarakat.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Meningkatkan pembangunan, penempatan, dan pemeliharaan infrastruktur dan lingkungan
+                                desa.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Pengadaan dan penempatan sarana prasarana kesehatan serta menciptakan lingkungan
+                                pemukiman yang sehat dan bersih.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Mengembangkan dan memelihara sarana prasarana pendidikan serta mengupayakan pendidikan
+                                anak untuk mencetak SDM yang cerdas serta berakhlakul karimah.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Mengembangkan usaha ekonomi produktif serta membangun sarana prasarana ekonomi.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Menegakkan keadilan sesuai dengan perundang-undangan yang berlaku.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Meningkatkan dan menjamin keamanan dan ketertiban masyarakat.
+                            </div>
+                            <div class="bg-white bg-opacity-10 p-4 rounded-lg border-l-4 border-warning">
+                                Memberdayakan masyarakat dan kelompok masyarakat.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Info -->
+                <!-- <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6">
+                        <h2 class="text-2xl font-bold mb-2">Periode Pemerintahan</h2>
+                        <p class="opacity-90">Struktur organisasi pemerintahan desa</p>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <div class="bg-secondary text-white p-8 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold mb-3">📅 Periode 2022 - 2028</h3>
+                            <p class="text-lg">Struktur Organisasi Pemerintahan Desa Padelegan</p>
+                        </div>
+                    </div>
+                </div> -->
     </section>
 
-    <!-- Produk Lokal Section -->
-    <section id="produk" class="py-12 md:py-16 lg:py-24 bg-white no-scroll-x">
-        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+  <!-- Produk Lokal Section - Teri Krispi Almund -->
+    <section id="produk" style="padding: 3rem 0; background-color: white;">
+        <div style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; overflow-x: hidden;">
+            
+            <!-- Header Section -->
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; font-weight: bold; color: #1f2937; margin-bottom: 1rem;">
                     🛍️ Produk Lokal Unggulan
                 </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
-                    Produk berkualitas tinggi dari hasil laut dan pertanian Desa Padelegan
+                <div style="width: 6rem; height: 0.25rem; background: linear-gradient(to right, #4ade80, #3b82f6); margin: 0 auto; border-radius: 9999px;"></div>
+                <p style="color: #6b7280; margin-top: 1.5rem; font-size: 1.125rem; max-width: 42rem; margin-left: auto; margin-right: auto; padding: 0 1rem;">
+                    Teri Krispi Almund - Produk UMKM berkualitas tinggi dari hasil laut Desa Padelegan
                 </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🦐
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Kerupuk Udang Premium</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Kerupuk udang asli dari udang segar Pantai The Legend. Renyah, gurih, dan tanpa pengawet buatan.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-orange-600">Rp 25.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/pack</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-medium">
-                                ⭐ Best Seller
-                            </span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 gradient-ocean flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🐟
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Abon Ikan Kakap</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Abon ikan kakap dengan cita rasa autentik. Dibuat dengan resep turun-temurun yang khas.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-blue-600">Rp 35.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-                                🏆 Premium
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🧂
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Ikan Asin Kembung</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Ikan asin kembung yang diproses secara tradisional. Cocok untuk berbagai masakan nusantara.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-gray-600">Rp 20.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/kg</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
-                                🌟 Traditional
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🥥
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Minyak Kelapa Murni</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Virgin coconut oil (VCO) dari kelapa segar lokal. 100% murni tanpa bahan kimia.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-yellow-600">Rp 45.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">
-                                💚 Organic
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🌿
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Rumput Laut Kering</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Rumput laut kering berkualitas tinggi, kaya nutrisi dan mineral alami dari laut.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-green-600">Rp 30.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/pack</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
-                                🌊 Sea Fresh
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-40 md:h-48 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-5xl md:text-6xl text-white group-hover:scale-110 transition-transform duration-300">
-                        🍯
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Petis Udang Asli</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
-                            Petis udang dengan resep rahasia keluarga. Penguat rasa alami untuk masakan tradisional.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl md:text-2xl font-bold text-amber-600">Rp 15.000</span>
-                            <span class="text-xs md:text-sm text-gray-500">/botol</span>
-                        </div>
-                        <div class="mt-4">
-                            <span class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium">
-                                🎯 Secret Recipe
-                            </span>
-                        </div>
+            <!-- Brand Header -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="background: linear-gradient(to right, #3b82f6, #06b6d4); border-radius: 1rem; padding: 2rem; color: white; display: inline-block; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                    <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">🐟 Teri Krispi Almund</h3>
+                    <p style="color: rgba(191, 219, 254, 1); font-size: 1rem;">UMKM Unggulan Desa Padelegan</p>
+                    <div style="margin-top: 0.75rem; font-size: 0.875rem; background: rgba(255, 255, 255, 0.2); border-radius: 9999px; padding: 0.25rem 0.75rem; display: inline-block;">
+                        ⭐ Kualitas Premium • 5 Varian Rasa
                     </div>
                 </div>
             </div>
 
-            <!-- Call to Action -->
-            <div class="text-center mt-12 md:mt-16">
-                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 md:p-8 text-white">
-                    <h3 class="text-xl md:text-2xl font-bold mb-4">Tertarik dengan Produk Kami?</h3>
-                    <p class="text-base md:text-lg mb-6 opacity-90">
-                        Hubungi kami untuk pemesanan dan informasi lebih lanjut
-                    </p>
-                    <div class="flex justify-center space-x-4 mb-6">
-                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
-                            💬
-                        </a>
-                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-purple-500 hover:bg-purple-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
-                            📧
-                        </a>
-                        <a href="#" class="w-10 h-10 md:w-12 md:h-12 bg-red-500 hover:bg-red-400 rounded-full flex items-center justify-center text-lg md:text-xl transition-colors duration-300">
-                            🌐
-                        </a>
+            <!-- Products Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                
+                <!-- Produk 1: Jagung Bakar -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 1px solid #f3f4f6; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-jagung-bakar.jpg" 
+                             alt="Teri Krispi Jagung Bakar" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #fbbf24, #f59e0b); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🌽
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            #1
+                        </div>
                     </div>
                     
-                    <!-- Newsletter -->
-                    <div class="bg-white bg-opacity-10 rounded-xl p-4">
-                        <h4 class="font-bold mb-3 text-base md:text-lg">📬 Newsletter</h4>
-                        <p class="text-sm text-blue-100 mb-4">Dapatkan update terbaru tentang Pantai The Legend</p>
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <input type="email" placeholder="Email Anda" class="flex-1 px-3 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-white bg-opacity-20 text-white placeholder-blue-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-300">
-                            <button class="bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none transition-colors">
-                                ➤
-                            </button>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Teri Krispi Jagung Bakar</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Teri krispi dengan cita rasa jagung bakar yang gurih dan aromatik. Camilan sehat dan bergizi dari hasil laut segar.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem; font-weight: bold; color: #d97706;">Rp 18.000</span>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/pack</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                🌽 Jagung Bakar
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Teri%20Krispi%20Jagung%20Bakar" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 2: BBQ -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 1px solid #f3f4f6; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-bbq.jpg" 
+                             alt="Teri Krispi BBQ" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ef4444, #ea580c); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🍖
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            #2
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Teri Krispi BBQ</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Teri krispi dengan bumbu BBQ yang smoky dan lezat. Perpaduan rasa tradisional dengan cita rasa modern.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem; font-weight: bold; color: #dc2626;">Rp 18.000</span>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/pack</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #fecaca; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                🔥 BBQ Smoky
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Teri%20Krispi%20BBQ" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 3: Pedas Manis -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 1px solid #f3f4f6; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-pedas-manis.jpg" 
+                             alt="Teri Krispi Pedas Manis" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ec4899, #ef4444); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🌶️
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            #3
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Teri Krispi Pedas Manis</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Kombinasi sempurna antara pedas dan manis yang menggugah selera. Cocok untuk semua kalangan.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem; font-weight: bold; color: #db2777;">Rp 18.000</span>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/pack</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #fce7f3; color: #be185d; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                🌶️ Pedas Manis
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Teri%20Krispi%20Pedas%20Manis" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 4: Hot -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 1px solid #f3f4f6; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-hot.jpg" 
+                             alt="Teri Krispi Hot" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #dc2626, #991b1b); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🔥
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            #4
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Teri Krispi Hot</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Untuk pecinta pedas sejati! Teri krispi dengan level kepedasan yang menantang dan memacu adrenalin.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem; font-weight: bold; color: #b91c1c;">Rp 18.000</span>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/pack</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #fecaca; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                🔥 Extra Hot
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Teri%20Krispi%20Hot" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 5: Original -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 1px solid #f3f4f6; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-original.jpg" 
+                             alt="Teri Krispi Original" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3b82f6, #06b6d4); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🐟
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            #5
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Teri Krispi Original</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Cita rasa asli teri yang autentik tanpa tambahan bumbu berlebih. Nikmati kelezatan alami teri segar.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <span style="font-size: 1.5rem; font-weight: bold; color: #2563eb;">Rp 18.000</span>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/pack</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #dbeafe; color: #1d4ed8; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                ⭐ Original
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Teri%20Krispi%20Original" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 6: Paket Lengkap -->
+                <div style="background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); overflow: hidden; transition: all 0.3s; border: 2px solid #e879f9; transform: translateY(0);" 
+                     onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 25px 50px -12px rgba(0, 0, 0, 0.25)'" 
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <!-- Product Image -->
+                    <div style="height: 12rem; position: relative; overflow: hidden;">
+                        <img src="teri-krispi-paket-lengkap.jpg" 
+                             alt="Paket Lengkap 5 Varian" 
+                             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.1)'"
+                             onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback dengan emoji jika gambar tidak ada -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #a855f7, #ec4899); display: none; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            🎁
+                        </div>
+                        <div style="position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); border-radius: 9999px; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: bold; color: white;">
+                            PROMO
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: bold; color: #1f2937; margin-bottom: 0.75rem;">Paket Lengkap 5 Varian</h3>
+                        <p style="color: #6b7280; margin-bottom: 1rem; line-height: 1.625; font-size: 0.875rem;">
+                            Nikmati semua varian rasa dalam satu paket! Hemat lebih banyak dengan membeli paket lengkap.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div>
+                                <span style="font-size: 1.5rem; font-weight: bold; color: #9333ea; margin-left: 0.5rem;">Rp 90.000</span>
+                            </div>
+                            <span style="font-size: 0.75rem; color: #6b7280; background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">/paket</span>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="display: inline-block; background-color: #f3e8ff; color: #7c3aed; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">
+                                🎁 Hemat Rp 10.000
+                            </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                            <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20mau%20pesan%20Paket%20Lengkap%205%20Varian%20Teri%20Krispi%20Almund" 
+                               target="_blank"
+                               style="background-color: #22c55e; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#16a34a'"
+                               onmouseout="this.style.backgroundColor='#22c55e'">
+                                💬 WhatsApp
+                            </a>
+                            <a href="https://id.shp.ee/A2MXCNR" 
+                               target="_blank"
+                               style="background-color: #f97316; color: white; font-size: 0.875rem; font-weight: bold; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: background-color 0.3s; text-align: center; text-decoration: none;"
+                               onmouseover="this.style.backgroundColor='#ea580c'"
+                               onmouseout="this.style.backgroundColor='#f97316'">
+                                🛍️ Shopee
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Video Section -->
-    <section id="video" class="py-12 md:py-16 lg:py-24 bg-gradient-to-br from-purple-50 to-blue-50 no-scroll-x">
-        <div class="mobile-container max-w-7xl mx-auto mobile-padding">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-                    🎥 Video Dokumentasi
-                </h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 text-base md:text-lg max-w-2xl mx-auto px-4">
-                    Saksikan keindahan Pantai The Legend dan proses pengolahan hasil laut dalam video dokumentasi kami
-                </p>
+            <!-- Statistics & Features -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0 3rem 0;">
+                <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 0.75rem; padding: 1rem; text-align: center; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+                    <div style="font-size: 2rem; font-weight: bold; color: #2563eb; margin-bottom: 0.5rem;">5</div>
+                    <p style="color: #1d4ed8; font-size: 1rem; font-weight: 500;">Varian Rasa</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #dcfce7, #bbf7d0); border-radius: 0.75rem; padding: 1rem; text-align: center; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+                    <div style="font-size: 2rem; font-weight: bold; color: #16a34a; margin-bottom: 0.5rem;">100%</div>
+                    <p style="color: #15803d; font-size: 1rem; font-weight: 500;">Teri Segar</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 0.75rem; padding: 1rem; text-align: center; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+                    <div style="font-size: 2rem; font-weight: bold; color: #d97706; margin-bottom: 0.5rem;">24H</div>
+                    <p style="color: #b45309; font-size: 1rem; font-weight: 500;">Fast Response</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff); border-radius: 0.75rem; padding: 1rem; text-align: center; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #9333ea; margin-bottom: 0.5rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="color: #7c3aed; font-size: 1rem; font-weight: 500;">Rating Terbaik</p>
+                </div>
             </div>
-            
-            <div class="grid lg:grid-cols-2 gap-8 md:gap-12">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                    <div class="relative">
-                        <div class="h-48 md:h-64 gradient-sunset flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(1)">
-                            <div class="text-center">
-                                <div class="text-4xl md:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-1">▶️</div>
-                                <h3 class="text-lg md:text-xl font-bold">Keindahan Pantai The Legend</h3>
+
+            <!-- Call to Action Section -->
+            <div style="text-align: center;">
+                <div style="background: linear-gradient(to right, #3b82f6, #06b6d4); border-radius: 1rem; padding: 2rem; color: white; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem; animation: wave 3s ease-in-out infinite;">🐟</div>
+                    <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Pesan Teri Krispi Almund Sekarang!</h3>
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem; opacity: 0.9; max-width: 42rem; margin-left: auto; margin-right: auto;">
+                        Rasakan kelezatan teri krispi terbaik dari Desa Padelegan. Tersedia 5 varian rasa yang menggugah selera!
+                    </p>
+                    
+                    <!-- Main CTA Buttons -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; max-width: 28rem; margin-left: auto; margin-right: auto;">
+                        <a href="https://wa.me/6281945787274?text=Halo%20Hanif,%20saya%20tertarik%20dengan%20Teri%20Krispi%20Almund.%20Bisa%20info%20lebih%20lanjut?" 
+                           target="_blank"
+                           style="background-color: #22c55e; padding: 0.75rem 1.5rem; border-radius: 0.75rem; transition: all 0.3s; transform: scale(1); font-weight: bold; text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;"
+                           onmouseover="this.style.backgroundColor='#16a34a'; this.style.transform='scale(1.05)'"
+                           onmouseout="this.style.backgroundColor='#22c55e'; this.style.transform='scale(1)'">
+                            💬 Chat WhatsApp
+                        </a>
+                        <a href="https://id.shp.ee/A2MXCNR" 
+                           target="_blank"
+                           style="background-color: #f97316; padding: 0.75rem 1.5rem; border-radius: 0.75rem; transition: all 0.3s; transform: scale(1); font-weight: bold; text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white;"
+                           onmouseover="this.style.backgroundColor='#ea580c'; this.style.transform='scale(1.05)'"
+                           onmouseout="this.style.backgroundColor='#f97316'; this.style.transform='scale(1)'">
+                            🛍️ Beli di Shopee
+                        </a>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h4 style="font-weight: bold; margin-bottom: 1rem; font-size: 1.125rem;">📞 Kontak Penjual</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 1rem;">
+                            <div style="text-align: center;">
+                                <p style="color: rgba(191, 219, 254, 1); margin-bottom: 0.25rem;">👤 Nama Penjual</p>
+                                <p style="font-weight: 600;">Hanif</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="color: rgba(191, 219, 254, 1); margin-bottom: 0.25rem;">📱 WhatsApp</p>
+                                <p style="font-weight: 600;">+62 819-4578-7274</p>
                             </div>
                         </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">
-                            🔴 LIVE
-                        </div>
                     </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Panorama Menakjubkan</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Saksikan panorama menakjubkan Pantai The Legend dari udara dan permukaan. Video ini menampilkan keindahan alam yang masih asri dan aktivitas masyarakat lokal yang harmonis dengan alam.
-                        </p>
-                        <div class="flex items-center mt-4 text-xs md:text-sm text-gray-500">
-                            <span class="mr-4">⏱️ 5:30 menit</span>
-                            <span>👁️ 12.5K views</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group">
-                    <div class="relative">
-                        <div class="h-48 md:h-64 gradient-ocean flex items-center justify-center text-white cursor-pointer group-hover:bg-opacity-80 transition-all duration-300" onclick="playVideo(2)">
-                            <div class="text-center">
-                                <div class="text-4xl md:text-6xl mb-4 group-hover:scale-110 transition-transform duration-300" id="play-btn-2">🎬</div>
-                                <h3 class="text-lg md:text-xl font-bold">Pengolahan Hasil Laut</h3>
-                            </div>
+                    <!-- Product Benefits -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; font-size: 0.875rem;">
+                        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 0.5rem; padding: 0.75rem; text-align: center;">
+                            <div style="font-size: 1.125rem; margin-bottom: 0.25rem;">🐟</div>
+                            <p>Teri Segar Lokal</p>
                         </div>
-                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">
-                            🎯 HOT
+                        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 0.5rem; padding: 0.75rem; text-align: center;">
+                            <div style="font-size: 1.125rem; margin-bottom: 0.25rem;">✅</div>
+                            <p>Tanpa Pengawet</p>
                         </div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3">Dari Laut ke Meja</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                            Dokumentasi lengkap proses pengolahan hasil laut menjadi produk bernilai tinggi. Dari tangkapan segar hingga menjadi produk siap konsumsi dengan teknologi tradisional yang terjaga.
-                        </p>
-                        <div class="flex items-center mt-4 text-xs md:text-sm text-gray-500">
-                            <span class="mr-4">⏱️ 8:15 menit</span>
-                            <span>👁️ 8.7K views</span>
+                        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 0.5rem; padding: 0.75rem; text-align: center;">
+                            <div style="font-size: 1.125rem; margin-bottom: 0.25rem;">🚚</div>
+                            <p>Pengiriman Cepat</p>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 0.5rem; padding: 0.75rem; text-align: center;">
+                            <div style="font-size: 1.125rem; margin-bottom: 0.25rem;">💯</div>
+                            <p>Halal & Higienis</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Video Statistics -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
-                <div class="text-center">
-                    <div class="text-2xl md:text-3xl font-bold text-blue-600 mb-2">25+</div>
-                    <p class="text-gray-600 text-sm md:text-base">Video Dokumentasi</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl md:text-3xl font-bold text-green-600 mb-2">50K+</div>
-                    <p class="text-gray-600 text-sm md:text-base">Total Views</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl md:text-3xl font-bold text-purple-600 mb-2">2.5K</div>
-                    <p class="text-gray-600 text-sm md:text-base">Subscribers</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl md:text-3xl font-bold text-orange-600 mb-2">95%</div>
-                    <p class="text-gray-600 text-sm md:text-base">Like Rate</p>
                 </div>
             </div>
         </div>
@@ -1019,21 +1719,25 @@
                         Pantai The Legend
                     </h3>
                     <p class="text-blue-100 mb-6 leading-relaxed text-sm md:text-base">
-                        Destinasi wisata bahari yang memadukan keindahan alam, kearifan lokal, dan potensi ekonomi masyarakat Desa Padelegan.
+                        Destinasi wisata bahari yang memadukan keindahan alam, kearifan lokal, dan potensi ekonomi
+                        masyarakat Desa Padelegan.
                     </p>
                     <div class="space-y-3">
-                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                        <p
+                            class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
                             <span class="mr-3">📍</span>
-                            Desa Padelegan, Gresik, Jawa Timur
+                            Desa Padelegan, Pademawu,Pamekasan, Jawa Timur
                         </p>
-                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                        <!-- <p
+                            class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
                             <span class="mr-3">📞</span>
-                            +62 123 456 7890
+                            
                         </p>
-                        <p class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
+                        <p
+                            class="flex items-center justify-center md:justify-start text-blue-100 text-sm md:text-base">
                             <span class="mr-3">📧</span>
                             info@pantaithelegend.com
-                        </p>
+                        </p> -->
                     </div>
                 </div>
 
@@ -1041,12 +1745,24 @@
                 <div class="text-center md:text-left">
                     <h3 class="text-lg md:text-xl font-bold mb-6">Quick Links</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                        <a href="#sejarah" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📜 Sejarah</a>
-                        <a href="#ikan" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🐟 Ikan Lokal</a>
-                        <a href="#galeri" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📸 Galeri</a>
-                        <a href="#desa" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🏘️ Desa</a>
-                        <a href="#produk" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🛍️ Produk</a>
-                        <a href="#video" class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🎥 Video</a>
+                        <a href="#sejarah"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📜
+                            Sejarah</a>
+                        <a href="#ikan"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🐟 Ikan
+                            Lokal</a>
+                        <a href="#galeri"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">📸
+                            Galeri</a>
+                        <a href="#desa"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🏘️
+                            Desa</a>
+                        <a href="#produk"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🛍️
+                            Produk</a>
+                        <a href="#video"
+                            class="block text-blue-100 hover:text-white transition-colors text-sm md:text-base">🎥
+                            Video</a>
                     </div>
                 </div>
             </div>
@@ -1070,19 +1786,28 @@
     <!-- Floating Action Button -->
     <div class="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50">
         <div class="relative">
-            <button class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 pulse-glow" id="fab-main">
+            <button
+                class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 pulse-glow"
+                id="fab-main">
                 <span class="text-lg md:text-xl">💬</span>
             </button>
-            
+
             <!-- Sub FABs -->
-            <div class="absolute bottom-12 md:bottom-16 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300" id="fab-menu">
-                <button class="w-10 h-10 md:w-12 md:h-12 bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="WhatsApp">
+            <div class="absolute bottom-12 md:bottom-16 right-0 space-y-3 opacity-0 transform scale-0 transition-all duration-300"
+                id="fab-menu">
+                <button
+                    class="w-10 h-10 md:w-12 md:h-12 bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+                    title="WhatsApp">
                     <span class="text-sm md:text-lg">📱</span>
                 </button>
-                <button class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Email">
+                <button
+                    class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+                    title="Email">
                     <span class="text-sm md:text-lg">📧</span>
                 </button>
-                <button class="w-10 h-10 md:w-12 md:h-12 bg-red-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" title="Telepon">
+                <button
+                    class="w-10 h-10 md:w-12 md:h-12 bg-red-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+                    title="Telepon">
                     <span class="text-sm md:text-lg">📞</span>
                 </button>
             </div>
@@ -1158,7 +1883,7 @@
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1170,11 +1895,115 @@
             });
         });
 
+        // Livelihood Pie Chart - DIPINDAHKAN KE ATAS SEBELUM OBSERVER
+        function drawLivelihoodChart() {
+            const canvas = document.getElementById('livelihoodChart');
+            if (!canvas) {
+                console.log('Canvas livelihoodChart tidak ditemukan');
+                return;
+            }
+
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 20;
+
+            const data = [{
+                    label: 'Nelayan',
+                    value: 830,
+                    color: '#3B82F6',
+                    percentage: 28
+                },
+                {
+                    label: 'Ibu Rumah Tangga',
+                    value: 970,
+                    color: '#EC4899',
+                    percentage: 32
+                },
+                {
+                    label: 'Pelajar',
+                    value: 671,
+                    color: '#8B5CF6',
+                    percentage: 22
+                },
+                {
+                    label: 'Petani',
+                    value: 287,
+                    color: '#10B981',
+                    percentage: 10
+                },
+                {
+                    label: 'Wiraswasta',
+                    value: 120,
+                    color: '#F59E0B',
+                    percentage: 4
+                },
+                {
+                    label: 'Lainnya',
+                    value: 135,
+                    color: '#6B7280',
+                    percentage: 4
+                }
+            ];
+
+            let currentAngle = -Math.PI / 2; // Start from top
+
+            // Clear canvas first
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw pie slices
+            data.forEach((segment, index) => {
+                const sliceAngle = (segment.value / 3013) * 2 * Math.PI;
+
+                // Draw slice
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+
+                // Draw border
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw percentage text
+                const textAngle = currentAngle + sliceAngle / 2;
+                const textX = centerX + Math.cos(textAngle) * (radius * 0.7);
+                const textY = centerY + Math.sin(textAngle) * (radius * 0.7);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 12px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(segment.percentage + '%', textX, textY);
+
+                currentAngle += sliceAngle;
+            });
+
+            // Draw center circle (donut effect)
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 0.4, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+
+            // Draw center text
+            ctx.fillStyle = '#374151';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('3,013', centerX, centerY - 5);
+            ctx.font = '12px Arial';
+            ctx.fillText('Total Jiwa', centerX, centerY + 10);
+
+            console.log('Chart berhasil digambar');
+        }
+
         // Population counter animation
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
             const increment = target / (duration / 16);
-            
+
             const timer = setInterval(() => {
                 start += increment;
                 if (start >= target) {
@@ -1185,7 +2014,7 @@
             }, 16);
         }
 
-        // Intersection Observer for animations
+        // Intersection Observer for animations - DIPERBAIKI
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1194,14 +2023,22 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    console.log('Section terlihat:', entry.target.id);
+
                     if (entry.target.id === 'desa') {
                         const counter = document.getElementById('population-counter');
                         if (!counter.dataset.animated) {
                             counter.dataset.animated = 'true';
-                            animateCounter(counter, 2847);
+                            animateCounter(counter, 3013); // DATA YANG BENAR
                         }
+
+                        // Draw chart when section becomes visible
+                        setTimeout(() => {
+                            console.log('Memulai drawing chart...');
+                            drawLivelihoodChart();
+                        }, 500);
                     }
-                    
+
                     // Add fade-in animation
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
@@ -1209,20 +2046,34 @@
             });
         }, observerOptions);
 
-        // Observe sections for animations
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
+        // Setup observer - DIPERBAIKI
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, setting up observers...');
+
+            // Observe sections for animations
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+                console.log('Observing section:', section.id);
+            });
+
+            // Test chart drawing untuk debugging - akan muncul otomatis setelah 2 detik
+            setTimeout(() => {
+                console.log('Testing chart draw...');
+                drawLivelihoodChart();
+            }, 2000);
         });
 
         // Gallery modal functionality
-        const galleryItems = document.querySelectorAll('[class*="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"]');
+        const galleryItems = document.querySelectorAll(
+            '[class*="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"]');
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const modal = document.createElement('div');
-                modal.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4';
+                modal.className =
+                    'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4';
                 modal.innerHTML = `
                     <div class="relative max-w-4xl w-full">
                         <div class="bg-white rounded-2xl overflow-hidden">
@@ -1240,7 +2091,7 @@
                     </div>
                 `;
                 document.body.appendChild(modal);
-                
+
                 // Close on background click
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
@@ -1255,7 +2106,7 @@
             const playBtn = document.getElementById(`play-btn-${videoNumber}`);
             playBtn.style.transform = 'scale(1.2)';
             playBtn.textContent = '⏸️';
-            
+
             setTimeout(() => {
                 playBtn.style.transform = 'scale(1)';
                 playBtn.textContent = videoNumber === 1 ? '▶️' : '🎬';
@@ -1286,9 +2137,9 @@
             if (e.target.closest('button')) {
                 const button = e.target.closest('button');
                 const title = button.title;
-                
+
                 let message = '';
-                switch(title) {
+                switch (title) {
                     case 'WhatsApp':
                         message = 'WhatsApp: +62 123 456 7890';
                         break;
@@ -1299,7 +2150,7 @@
                         message = 'Telepon: +62 123 456 7890';
                         break;
                 }
-                
+
                 alert(`Hubungi kami melalui:\n${message}`);
             }
         });
@@ -1309,7 +2160,7 @@
             element.addEventListener('mouseenter', () => {
                 element.style.animationDuration = '1s';
             });
-            
+
             element.addEventListener('mouseleave', () => {
                 element.style.animationDuration = '3s';
             });
@@ -1328,7 +2179,7 @@
                     </div>
                 </div>
             `;
-            
+
             const loadingStyle = document.createElement('style');
             loadingStyle.textContent = `
                 @keyframes loading {
@@ -1337,9 +2188,9 @@
                 }
             `;
             document.head.appendChild(loadingStyle);
-            
+
             document.body.appendChild(loader);
-            
+
             setTimeout(() => {
                 loader.style.opacity = '0';
                 loader.style.transition = 'opacity 0.5s ease';
@@ -1355,7 +2206,7 @@
                 const scrolled = window.pageYOffset;
                 const hero = document.getElementById('home');
                 const rate = scrolled * -0.5;
-                
+
                 if (hero) {
                     hero.style.transform = `translateY(${rate}px)`;
                 }
@@ -1417,14 +2268,17 @@
                 animal.style.animation = 'none';
                 animal.style.transform = 'scale(1.5) rotate(360deg)';
                 animal.style.transition = 'transform 0.5s ease';
-                
+
                 setTimeout(() => {
-                    animal.style.animation = animal.classList.contains('fish-1') ? 'swim-right 15s infinite linear' :
-                                           animal.classList.contains('fish-2') ? 'swim-left 20s infinite linear' :
-                                           animal.classList.contains('fish-3') ? 'swim-diagonal 18s infinite linear' :
-                                           animal.classList.contains('jellyfish') ? 'float-vertical 12s infinite linear' :
-                                           animal.classList.contains('seahorse') ? 'bounce-gentle 10s infinite linear' :
-                                           'swim-slow 25s infinite linear';
+                    animal.style.animation = animal.classList.contains('fish-1') ?
+                        'swim-right 15s infinite linear' :
+                        animal.classList.contains('fish-2') ? 'swim-left 20s infinite linear' :
+                        animal.classList.contains('fish-3') ? 'swim-diagonal 18s infinite linear' :
+                        animal.classList.contains('jellyfish') ?
+                        'float-vertical 12s infinite linear' :
+                        animal.classList.contains('seahorse') ?
+                        'bounce-gentle 10s infinite linear' :
+                        'swim-slow 25s infinite linear';
                     animal.style.transform = '';
                     animal.style.transition = '';
                 }, 500);
@@ -1436,13 +2290,15 @@
             if (e.touches.length > 1) {
                 e.preventDefault();
             }
-        }, { passive: false });
+        }, {
+            passive: false
+        });
 
         // Ensure no horizontal overflow
         function checkHorizontalOverflow() {
             const body = document.body;
             const html = document.documentElement;
-            
+
             if (body.scrollWidth > window.innerWidth || html.scrollWidth > window.innerWidth) {
                 body.style.overflowX = 'hidden';
                 html.style.overflowX = 'hidden';
@@ -1454,4 +2310,5 @@
         window.addEventListener('resize', checkHorizontalOverflow);
     </script>
 </body>
+
 </html>
